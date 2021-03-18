@@ -10,8 +10,8 @@ resources:
     configuration:
       sshKey: VM_DEPLOY_SSHKEY
       targets:
-        - 192.168.50.3
-        - 192.168.50.3
+        - 10.90.127.244
+        - 10.90.127.244
 
 pipelines:
   - name: TAYLORL_4009
