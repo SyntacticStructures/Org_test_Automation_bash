@@ -1,9 +1,9 @@
 resources:
-  - name: myApp
+  - name: TAYLORL_4009_fileSpec
     type: FileSpec
     configuration:
-      sourceArtifactory: artifactoryIntegration
-      pattern: "example-repo-local/myApp.sh"
+      sourceArtifactory: s_artifactory
+      pattern: "test-automation-generic-local/TAYLORL_4009_fileSpec.txt"
 
   - name: myVM
     type: VmCluster
@@ -16,7 +16,18 @@ resources:
 pipelines:
   - name: TAYLORL_4009
     steps:
-      - name: myDeploy
+      - name: TAYLORL_4009_1
+        type: Bash
+        configuration:
+          integrations:
+            - name: s_artifactory
+          outputResources:
+            - name: TAYLORL_4009_fileSpec
+        execution:
+          onExecute:
+            - echo "File spec ${run_id}" > TAYLORL_4009_fileSpec.txt
+            - jfrog rt upload TAYLORL_4009_fileSpec.txt test-automation-generic-local
+      - name: TAYLORL_4009_2
         type: jfrog_dev/LinuxVMDeploy
         configuration:
           vmEnvironmentVariables:
@@ -24,6 +35,6 @@ pipelines:
             - "var2=${run_id}"
           inputResources:
             - name: myVM
-            - name: myApp
+            - name: TAYLORL_4009_fileSpec
           deployCommand: "ls /opt"
           sshUser: root
