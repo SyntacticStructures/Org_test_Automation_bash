@@ -8,10 +8,10 @@ resources:
   - name: myVM
     type: VmCluster
     configuration:
-      sshKey: u16ssh
+      sshKey: u16ssha
       targets:
         - 192.168.50.3
-        - 192.168.50.2
+        - 192.168.50.3
 
 pipelines:
   - name: TAYLORL_4009
