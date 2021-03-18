@@ -1,0 +1,29 @@
+resources:
+  - name: myApp
+    type: FileSpec
+    configuration:
+      sourceArtifactory: artifactoryIntegration
+      pattern: "example-repo-local/myApp.sh"
+
+  - name: myVM
+    type: VmCluster
+    configuration:
+      sshKey: u16ssh
+      targets:
+        - 192.168.50.3
+        - 192.168.50.2
+
+pipelines:
+  - name: TAYLORL_4009
+    steps:
+      - name: myDeploy
+        type: jfrog_dev/LinuxVMDeploy
+        configuration:
+          vmEnvironmentVariables:
+            - "var1=foo"
+            - "var2=${run_id}"
+          inputResources:
+            - name: myVM
+            - name: myApp
+          deployCommand: "ls /opt"
+          sshUser: root
