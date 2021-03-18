@@ -37,4 +37,4 @@ pipelines:
             - name: myVM
             - name: TAYLORL_4009_fileSpec
           deployCommand: "ls /opt"
-          sshUser: root
+          sshUser: ubuntu
