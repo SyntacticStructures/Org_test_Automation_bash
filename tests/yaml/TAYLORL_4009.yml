@@ -30,9 +30,13 @@ pipelines:
       - name: TAYLORL_4009_2
         type: jfrog_dev/LinuxVMDeploy
         configuration:
+          vmEnvironmentVariables:
+            - "foo=bar"
+            - "baz=${step_name}"
           inputResources:
             - name: myVM
             - name: TAYLORL_4009_fileSpec
           deployCommand: "ls ~/${step_name}/${run_id}"
+          postDeployCommand: "printenv | grep ${step_name}"
           # sshUser cannot be root for the ec2 vms we are using
           sshUser: ubuntu
