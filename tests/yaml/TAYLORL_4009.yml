@@ -39,8 +39,8 @@ pipelines:
           deployCommand: >-
             (
               ls ~/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt &&
-              [[ $(printenv | grep 'foo') == 'bar' ]] &&
-              [[ $(printenv | grep 'baz') == 'baz=TAYLORL_4009_1' ]]
+              [[ $foo == 'bar' ]] &&
+              [[ $baz == 'TAYLORL_4009_1' ]]
             ) || exit 1
           # Check post deploy command runs on vm
           postDeployCommand: "ls ~/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt || exit 1"
