@@ -37,11 +37,11 @@ pipelines:
             - name: myVM
             - name: TAYLORL_4009_fileSpec
           deployCommand: >-
-            "(
-              ls ~/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt &&
-              [[ $(printenv | grep 'foo') == 'foo=bar' ]] &&
-              [[ $(printenv | grep 'foo') == 'baz=TAYLORL_4009_1' ]
-            ) || exit 1"
+            (\
+              ls ~/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt && \
+              [[ $(printenv | grep 'foo') == 'foo=bar' ]] && \
+              [[ $(printenv | grep 'foo') == 'baz=TAYLORL_4009_1' ] \
+            ) || exit 1
           # Check post deploy command runs on vm
           postDeployCommand: "ls ~/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt || exit 1"
           # sshUser cannot be root for the ec2 vms we are using
