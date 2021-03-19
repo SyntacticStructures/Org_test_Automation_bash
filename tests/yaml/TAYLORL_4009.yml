@@ -36,7 +36,8 @@ pipelines:
           inputResources:
             - name: myVM
             - name: TAYLORL_4009_fileSpec
-          deployCommand: "ls ~/${step_name}/${run_id}"
+          deployCommand: "exit 1"
+#          deployCommand: "ls ~/${step_name}/${run_id}"
           postDeployCommand: "printenv | grep ${step_name}"
           # sshUser cannot be root for the ec2 vms we are using
           sshUser: ubuntu
