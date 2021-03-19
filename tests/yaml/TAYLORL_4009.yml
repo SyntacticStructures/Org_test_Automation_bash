@@ -30,12 +30,9 @@ pipelines:
       - name: TAYLORL_4009_2
         type: jfrog_dev/LinuxVMDeploy
         configuration:
-          vmEnvironmentVariables:
-            - "var1=foo"
-            - "var2=${run_id}"
           inputResources:
             - name: myVM
             - name: TAYLORL_4009_fileSpec
-          deployCommand: "ls /opt"
-          # TODO: make it a different user
-          sshUser: taylorl
+          deployCommand: "ls ~/${step_name}/${run_id}"
+          # sshUser cannot be root for the ec2 vms we are using
+          sshUser: ubuntu
