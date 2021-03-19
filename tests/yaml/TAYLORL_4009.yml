@@ -37,4 +37,5 @@ pipelines:
             - name: myVM
             - name: TAYLORL_4009_fileSpec
           deployCommand: "ls /opt"
-          sshUser: ubuntu
+          # TODO: make it a different user
+          sshUser: taylorl
