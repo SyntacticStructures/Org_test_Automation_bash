@@ -29,7 +29,7 @@ pipelines:
             - jfrog rt upload TAYLORL_4900_fileSpec.txt test-automation-generic-local
 
       # Check that rollbackCommand runs on vm when there is an error.
-      - name: TAYLORL_4009_2_2
+      - name: TAYLORL_4900_2_2
         type: jfrog_dev/LinuxVMDeploy
         configuration:
           inputResources:
