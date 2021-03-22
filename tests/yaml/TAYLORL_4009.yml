@@ -27,6 +27,7 @@ pipelines:
           onExecute:
             - echo "File spec ${run_id}" > TAYLORL_4009_fileSpec.txt
             - jfrog rt upload TAYLORL_4009_fileSpec.txt test-automation-generic-local
+      # Check that deploy command runs and FileSpec is uploaded to default dir.
       - name: TAYLORL_4009_2
         type: jfrog_dev/LinuxVMDeploy
         configuration:
@@ -36,8 +37,22 @@ pipelines:
           inputResources:
             - name: myVM
             - name: TAYLORL_4009_fileSpec
-          deployCommand: "ls /home/ubuntu/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt || exit 1"
-          # Check post deploy command runs on vm
+          deployCommand: "ls ~/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt || exit 1"
           postDeployCommand: "ls ~/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt || exit 1"
+          sshUser: ubuntu
+
+      # Check that deploy artifacts are uploaded to non-default dir.
+      - name: TAYLORL_4009_3
+        type: jfrog_dev/LinuxVMDeploy
+        configuration:
+          targetDirectory: "/opt/${step_name}/${run_id}"
+          vmEnvironmentVariables:
+            - "step_name=${step_name}"
+            - "run_id=${run_id}"
+          inputResources:
+            - name: myVM
+            - name: TAYLORL_4009_fileSpec
+          deployCommand: "ls ${targetDirectory}/TAYLORL_4009_fileSpec.txt || exit 1"
+          # Check post deploy command runs on vm
           # sshUser cannot be root for the ec2 vms we are using
           sshUser: ubuntu
