@@ -14,7 +14,7 @@ resources:
         - bogus.ip.address.to.trigger.error
 
 pipelines:
-  - name: TAYLORL_4900
+  - name: TAYLORL_4900_2
     steps:
       - name: TAYLORL_4900_2_1
         type: Bash
