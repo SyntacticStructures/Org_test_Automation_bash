@@ -37,11 +37,11 @@ pipelines:
           inputResources:
             - name: myVM
             - name: TAYLORL_4009_fileSpec
-              trigger: false
           deployCommand: "ls ~/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt || exit 1"
           postDeployCommand: "ls ~/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt || exit 1"
           sshUser: ubuntu
 
+      # TODO: separate cases with duplicate resource steps
       # Check that deploy artifacts are uploaded to non-default dir.
       - name: TAYLORL_4009_3
         type: jfrog_dev/LinuxVMDeploy
@@ -54,8 +54,20 @@ pipelines:
           inputResources:
             - name: myVM
             - name: TAYLORL_4009_fileSpec
-              trigger: false
           deployCommand: "ls ${target_directory}/TAYLORL_4009_fileSpec.txt || exit 1"
+          # Check post deploy command runs on vm
+          # sshUser cannot be root for the ec2 vms we are using
+          sshUser: ubuntu
+
+      # Check that rollbackCommand runs on vm when there is an error.
+      - name: TAYLORL_4009_4
+        type: jfrog_dev/LinuxVMDeploy
+        configuration:
+          inputResources:
+            - name: myVM
+            - name: TAYLORL_4009_fileSpec
+          deployCommand: "echo 'Throwing an error to trigger rollback command'; exit 1"
+          rollbackCommand: "whoami"
           # Check post deploy command runs on vm
           # sshUser cannot be root for the ec2 vms we are using
           sshUser: ubuntu
