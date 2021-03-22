@@ -1,0 +1,42 @@
+resources:
+  - name: TAYLORL_4900_fileSpec
+    type: FileSpec
+    configuration:
+      sourceArtifactory: s_artifactory
+      pattern: "test-automation-generic-local/TAYLORL_4900_fileSpec.txt"
+
+  - name: myVMError
+    type: VmCluster
+    configuration:
+      sshKey: VM_DEPLOY_SSHKEY
+      targets:
+        - 10.90.117.100
+        - bogus.ip.address.to.trigger.error
+
+pipelines:
+  - name: TAYLORL_4900
+    steps:
+      - name: TAYLORL_4900_2_1
+        type: Bash
+        configuration:
+          integrations:
+            - name: s_artifactory
+          outputResources:
+            - name: TAYLORL_4900_fileSpec
+        execution:
+          onExecute:
+            - echo "File spec ${run_id}" > TAYLORL_4900_fileSpec.txt
+            - jfrog rt upload TAYLORL_4900_fileSpec.txt test-automation-generic-local
+
+      # Check that rollbackCommand runs on vm when there is an error.
+      - name: TAYLORL_4009_2_2
+        type: jfrog_dev/LinuxVMDeploy
+        configuration:
+          inputResources:
+            - name: myVMError
+            - name: TAYLORL_4009_fileSpec
+          deployCommand: "echo 'This should run one time.';"
+          rollbackCommand: "whoami"
+          # Check post deploy command runs on vm
+          # sshUser cannot be root for the ec2 vms we are using
+          sshUser: ubuntu
