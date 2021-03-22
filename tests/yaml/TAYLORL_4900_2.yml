@@ -35,7 +35,7 @@ pipelines:
             - name: myVMError
             - name: TAYLORL_4900_fileSpec
           deployCommand: "echo 'This should run one time.';"
-          rollbackCommand: "[[ $(whoami) == \'${step_configuration_sshUser}\' ]] && echo 'true' || echo 'false'"
+          rollbackCommand: "[[ \$(whoami) == ${step_configuration_sshUser} ]] && echo 'true' || echo 'false'"
           # Check post deploy command runs on vm
           # sshUser cannot be root for the ec2 vms we are using
           sshUser: ubuntu
