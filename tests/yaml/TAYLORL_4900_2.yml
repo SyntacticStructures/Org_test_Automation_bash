@@ -12,6 +12,7 @@ resources:
       targets:
         - 10.90.117.100
         - 0.0.0.0
+        - 1.2.3.4
 
 pipelines:
   - name: TAYLORL_4900_2
