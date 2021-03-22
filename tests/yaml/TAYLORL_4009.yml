@@ -41,8 +41,7 @@ pipelines:
           deployCommand: >-
             "(
              ls ~/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt &&
-             [[ $foo == 'bar' ]] &&
-             [[ $baz == 'baz=TAYLORL_4009_1' ]]
+             [[ $foo == 'bar' ]]
             ) || exit 1"
           # Check post deploy command runs on vm
           postDeployCommand: "ls ~/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt || exit 1"
