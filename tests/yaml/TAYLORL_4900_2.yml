@@ -31,15 +31,11 @@ pipelines:
       - name: TAYLORL_4900_2_2
         type: jfrog_dev/LinuxVMDeploy
         configuration:
-          targetDirectory: "~/test/${step_name}/${run_id}"
-          vmEnvironmentVariables:
-            - "step_name=${step_name}"
-            - "run_id=${run_id}"
-            - "target_directory=${step_configuration_targetDirectory}"
           inputResources:
             - name: myVMError
             - name: TAYLORL_4900_fileSpec
-          deployCommand: "[[ $(whoami) == ${ssh_user} ]] && echo 'true'"
+          deployCommand: "echo 'This should run one time.';"
+          rollbackCommand: "whoami == ${ssh_user} || exit 1"
           # Check post deploy command runs on vm
           # sshUser cannot be root for the ec2 vms we are using
           sshUser: ubuntu
