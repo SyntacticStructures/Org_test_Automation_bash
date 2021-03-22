@@ -49,10 +49,11 @@ pipelines:
           vmEnvironmentVariables:
             - "step_name=${step_name}"
             - "run_id=${run_id}"
+            - "target_directory=${step_configuration_targetDirectory}"
           inputResources:
             - name: myVM
             - name: TAYLORL_4009_fileSpec
-          deployCommand: "ls ${targetDirectory}/TAYLORL_4009_fileSpec.txt || exit 1"
+          deployCommand: "ls ${target_directory}/TAYLORL_4009_fileSpec.txt || exit 1"
           # Check post deploy command runs on vm
           # sshUser cannot be root for the ec2 vms we are using
           sshUser: ubuntu
