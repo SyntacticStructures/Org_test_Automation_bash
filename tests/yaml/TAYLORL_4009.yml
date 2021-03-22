@@ -39,10 +39,9 @@ pipelines:
             - name: TAYLORL_4009_fileSpec
           #          deployCommand: "whoami && printenv && pwd && ls /home/ubuntu/${step_name}/${run_id} || exit 1"
           deployCommand: >-
-            "(
+            "
              ls ~/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt &&
-             [[ $foo == 'bar' ]]
-            ) || exit 1"
+            || exit 1"
           # Check post deploy command runs on vm
           postDeployCommand: "ls ~/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt || exit 1"
           # sshUser cannot be root for the ec2 vms we are using
