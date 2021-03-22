@@ -37,11 +37,7 @@ pipelines:
           inputResources:
             - name: myVM
             - name: TAYLORL_4009_fileSpec
-          deployCommand: >-
-            "whoami && printenv && pwd &&
-              ls &&
-              [[ $foo == 'bar' ]]
-            || exit 1"
+          deployCommand: "whoami && printenv && pwd && ls || exit 1"
           # Check post deploy command runs on vm
           postDeployCommand: "ls ~/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt || exit 1"
           # sshUser cannot be root for the ec2 vms we are using
