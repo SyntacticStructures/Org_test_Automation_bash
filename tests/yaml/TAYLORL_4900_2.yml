@@ -5,18 +5,18 @@ resources:
       sourceArtifactory: s_artifactory
       pattern: "test-automation-generic-local/TAYLORL_4900_fileSpec.txt"
 
-  - name: myVM
+  - name: myVMError
     type: VmCluster
     configuration:
       sshKey: VM_DEPLOY_SSHKEY
       targets:
         - 10.90.117.100
-        - 10.90.117.100
+        - 0.0.0.0
 
 pipelines:
-  - name: TAYLORL_4900_1
+  - name: TAYLORL_4900_2
     steps:
-      - name: TAYLORL_4900_1_1
+      - name: TAYLORL_4900_2_1
         type: Bash
         configuration:
           integrations:
@@ -28,7 +28,7 @@ pipelines:
             - echo "File spec ${run_id}" > TAYLORL_4900_fileSpec.txt
             - jfrog rt upload TAYLORL_4900_fileSpec.txt test-automation-generic-local
       # Check that deploy artifacts are uploaded to non-default dir.
-      - name: TAYLORL_4900_1_2
+      - name: TAYLORL_4900_2_2
         type: jfrog_dev/LinuxVMDeploy
         configuration:
           targetDirectory: "~/test/${step_name}/${run_id}"
@@ -37,9 +37,9 @@ pipelines:
             - "run_id=${run_id}"
             - "target_directory=${step_configuration_targetDirectory}"
           inputResources:
-            - name: myVM
+            - name: myVMError
             - name: TAYLORL_4900_fileSpec
-          deployCommand: "ls ${target_directory}/TAYLORL_4900_fileSpec.txt || exit 1"
+          deployCommand: "[[ $(whoami) == ${ssh_user} ]] && echo 'true'"
           # Check post deploy command runs on vm
           # sshUser cannot be root for the ec2 vms we are using
           sshUser: ubuntu
