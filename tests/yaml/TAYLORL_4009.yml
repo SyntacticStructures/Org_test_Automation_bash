@@ -10,8 +10,8 @@ resources:
     configuration:
       sshKey: VM_DEPLOY_SSHKEY
       targets:
-        - 10.90.127.244
-        - 10.90.127.244
+        - 10.90.117.100
+        - 10.90.117.100
 
 pipelines:
   - name: TAYLORL_4009
@@ -37,11 +37,11 @@ pipelines:
             - name: myVM
             - name: TAYLORL_4009_fileSpec
           deployCommand: >-
-            "printenv && pwd && (
+            "printenv && pwd &&
               ls ~/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt &&
               [[ $foo == 'bar' ]] &&
               [[ $baz == 'baz=TAYLORL_4009_1' ]]
-            ) || exit 1"
+            || exit 1"
           # Check post deploy command runs on vm
           postDeployCommand: "ls ~/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt || exit 1"
           # sshUser cannot be root for the ec2 vms we are using
