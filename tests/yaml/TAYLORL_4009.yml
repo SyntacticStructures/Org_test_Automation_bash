@@ -13,6 +13,14 @@ resources:
         - 10.90.117.100
         - 10.90.117.100
 
+  - name: myVMError
+    type: VmCluster
+    configuration:
+      sshKey: VM_DEPLOY_SSHKEY
+      targets:
+        - 10.90.117.100
+        - bogus.ip.address.to.trigger.error
+
 pipelines:
   - name: TAYLORL_4009
     steps:
@@ -64,9 +72,9 @@ pipelines:
         type: jfrog_dev/LinuxVMDeploy
         configuration:
           inputResources:
-            - name: myVM
+            - name: myVMError
             - name: TAYLORL_4009_fileSpec
-          deployCommand: "echo 'Throwing an error to trigger rollback command'; exit 1"
+          deployCommand: "echo 'This should run one time.';"
           rollbackCommand: "whoami"
           # Check post deploy command runs on vm
           # sshUser cannot be root for the ec2 vms we are using
