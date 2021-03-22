@@ -40,7 +40,6 @@ pipelines:
           deployCommand: >-
             "whoami && printenv && pwd &&
               ls &&
-              ls /home/ubuntu/${step_name}/${run_id}
               [[ $foo == 'bar' ]]
             || exit 1"
           # Check post deploy command runs on vm
