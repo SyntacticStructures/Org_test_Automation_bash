@@ -1,0 +1,42 @@
+resources:
+  - name: TAYLORL_4900_fileSpec
+    type: FileSpec
+    configuration:
+      sourceArtifactory: s_artifactory
+      pattern: "test-automation-generic-local/TAYLORL_4900_fileSpec.txt"
+
+  - name: myVM
+    type: VmCluster
+    configuration:
+      sshKey: VM_DEPLOY_SSHKEY
+      targets:
+        - 10.90.117.100
+        - 10.90.117.100
+
+pipelines:
+  - name: TAYLORL_4900_0
+    steps:
+      - name: TAYLORL_4900_0_1
+        type: Bash
+        configuration:
+          integrations:
+            - name: s_artifactory
+          outputResources:
+            - name: TAYLORL_4900_fileSpec
+        execution:
+          onExecute:
+            - echo "File spec ${run_id}" > TAYLORL_4900_fileSpec.txt
+            - jfrog rt upload TAYLORL_4900_fileSpec.txt test-automation-generic-local
+      # Check that deploy command runs and FileSpec is uploaded to default dir.
+      - name: TAYLORL_4900_0_2
+        type: jfrog_dev/LinuxVMDeploy
+        configuration:
+          vmEnvironmentVariables:
+            - "step_name=${step_name}"
+            - "run_id=${run_id}"
+          inputResources:
+            - name: myVM
+            - name: TAYLORL_4900_fileSpec
+          deployCommand: "ls ~/${step_name}/${run_id}/TAYLORL_4900_fileSpec.txt || exit 1"
+          postDeployCommand: "ls ~/${step_name}/${run_id}/TAYLORL_4900_fileSpec.txt || exit 1"
+          sshUser: ubuntu
