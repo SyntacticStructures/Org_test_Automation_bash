@@ -39,6 +39,7 @@ pipelines:
             - name: TAYLORL_4009_fileSpec
           deployCommand: >-
             "whoami && printenv && pwd &&
+              ls &&
               ls /home/ubuntu/${step_name}/${run_id}
               [[ $foo == 'bar' ]]
             || exit 1"
