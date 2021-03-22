@@ -32,11 +32,17 @@ pipelines:
         configuration:
           vmEnvironmentVariables:
             - "foo=bar"
-            - "baz=${step_name}"
+            - "step_name=${step_name}"
+            - "run_id=${run_id}"
           inputResources:
             - name: myVM
             - name: TAYLORL_4009_fileSpec
-          deployCommand: whoami
+          deployCommand: >-
+            "whoami && printenv && pwd &&
+              ls ~/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt &&
+              [[ $foo == 'bar' ]] &&
+              [[ $baz == 'baz=TAYLORL_4009_1' ]]
+            || exit 1"
           # Check post deploy command runs on vm
           postDeployCommand: "ls ~/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt || exit 1"
           # sshUser cannot be root for the ec2 vms we are using
