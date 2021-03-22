@@ -40,6 +40,4 @@ pipelines:
             - name: TAYLORL_4900_fileSpec
           deployCommand: "echo 'deployCommand runs.'"
           rollbackCommand: "echo 'rollBackCommand runs.'"
-          # Check post deploy command runs on vm
-          # sshUser cannot be root for the ec2 vms we are using
           sshUser: ubuntu

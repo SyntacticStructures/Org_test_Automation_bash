@@ -40,6 +40,4 @@ pipelines:
             - name: myVM
             - name: TAYLORL_4900_fileSpec
           deployCommand: "ls ${target_directory}/TAYLORL_4900_fileSpec.txt || exit 1"
-          # Check post deploy command runs on vm
-          # sshUser cannot be root for the ec2 vms we are using
           sshUser: ubuntu
