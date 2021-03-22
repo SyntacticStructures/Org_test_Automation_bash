@@ -31,7 +31,6 @@ pipelines:
           onExecute:
             - echo "File spec ${run_id}" > TAYLORL_4900_fileSpec.txt
             - jfrog rt upload TAYLORL_4900_fileSpec.txt test-automation-generic-local
-      # fastFail by default: deployment stops when a vm fails to deploy
       - name: TAYLORL_4900_3_2
         type: jfrog_dev/LinuxVMDeploy
         configuration:
@@ -41,3 +40,4 @@ pipelines:
           deployCommand: "echo 'deployCommand runs.'"
           rollbackCommand: "echo 'rollBackCommand runs.'"
           sshUser: ubuntu
+          fastFail: false
