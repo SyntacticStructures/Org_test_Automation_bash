@@ -75,7 +75,7 @@ pipelines:
             - name: myVMError
             - name: TAYLORL_4009_fileSpec
           deployCommand: "echo 'This should run one time.';"
-          rollbackCommand: "[[ whoami ]] == ubuntu"
+          rollbackCommand: "whoami"
           # Check post deploy command runs on vm
           # sshUser cannot be root for the ec2 vms we are using
           sshUser: ubuntu
