@@ -37,7 +37,7 @@ pipelines:
             - name: myVM
             - name: TAYLORL_4009_fileSpec
           deployCommand: >-
-            "printenv && pwd &&
+            "whoami && printenv && pwd &&
               ls ~/${step_name}/${run_id}/TAYLORL_4009_fileSpec.txt &&
               [[ $foo == 'bar' ]] &&
               [[ $baz == 'baz=TAYLORL_4009_1' ]]
