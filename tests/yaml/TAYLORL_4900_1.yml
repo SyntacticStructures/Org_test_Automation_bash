@@ -8,10 +8,11 @@ resources:
   - name: myVM
     type: VmCluster
     configuration:
+      integrations:
+        - GENERIC
       sshKey: VM_DEPLOY_SSHKEY
       targets:
-        - {{VM_TARGET_0}}
-        - {{VM_TARGET_1}}
+        - 0.0.0.0
 
 pipelines:
   - name: TAYLORL_4900_1
