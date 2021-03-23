@@ -42,4 +42,4 @@ pipelines:
           # Fail the test if the file does not exist in the right path on the vm.
           deployCommand: "ls ${target_directory}/TAYLORL_4900_fileSpec.txt || exit 1"
           sshUser: ubuntu
-          rolloutDelay: 3
+          rolloutDelaySeconds: 3
