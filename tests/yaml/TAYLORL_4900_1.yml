@@ -10,7 +10,7 @@ resources:
     configuration:
       sshKey: VM_DEPLOY_SSHKEY
       targets:
-        - ${foo}
+        - ${int_GENERIC_VM_TARGET_0}
         - 0.0.0.0
 
 pipelines:
