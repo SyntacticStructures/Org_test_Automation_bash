@@ -10,8 +10,8 @@ resources:
     configuration:
       sshKey: VM_DEPLOY_SSHKEY
       targets:
-        - ${int_GENERIC_VM_TARGET_0}
-        - 0.0.0.0
+        - ${int_GENERIC_VM_ADDRESS_0}
+        - ${int_GENERIC_VM_ADDRESS_1}
 
 pipelines:
   - name: TAYLORL_4900_1
@@ -32,9 +32,7 @@ pipelines:
         type: jfrog_dev/LinuxVMDeploy
         configuration:
           integrations:
-            - name: GENERIC
-          environmentVariables:
-            foo: 1.2.3.4
+            - name: VM_DEPLOY_ADDRESSES
           targetDirectory: "~/test/${step_name}/${run_id}"
           vmEnvironmentVariables:
             - "step_name=${step_name}"
