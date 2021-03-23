@@ -10,8 +10,8 @@ resources:
     configuration:
       sshKey: VM_DEPLOY_SSHKEY
       targets:
-        - 0.0.0.0
         - ${foo}
+        - 0.0.0.0
 
 pipelines:
   - name: TAYLORL_4900_1
@@ -31,6 +31,8 @@ pipelines:
       - name: TAYLORL_4900_1_2
         type: jfrog_dev/LinuxVMDeploy
         configuration:
+          integrations:
+            - GENERIC
           environmentVariables:
             foo: 'bar'
           targetDirectory: "~/test/${step_name}/${run_id}"
