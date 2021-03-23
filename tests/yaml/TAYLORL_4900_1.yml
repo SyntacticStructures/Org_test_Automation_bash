@@ -10,8 +10,8 @@ resources:
     configuration:
       sshKey: VM_DEPLOY_SSHKEY
       targets:
-        - ${int_GENERIC_VM_ADDRESS_0}
-        - ${int_GENERIC_VM_ADDRESS_1}
+        - ${int_VM_DEPLOY_ADDRESSES_VM_ADDRESS_0}
+        - ${int_VM_DEPLOY_ADDRESSES_VM_ADDRESS_1}
 
 pipelines:
   - name: TAYLORL_4900_1
