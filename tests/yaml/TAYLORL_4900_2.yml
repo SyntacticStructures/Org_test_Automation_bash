@@ -12,9 +12,9 @@ resources:
       targets:
         # 0.0.0.0 should fail
         # so we should never see 1.2.3.4 in console output
-        - ${int_VM_DEPLOY_ADDRESSES_VM_ADDRESS_0}
-        - ${int_VM_DEPLOY_ADDRESSES_ERROR_0}
-        - ${int_VM_DEPLOY_ADDRESSES_ERROR_1}
+        - ${int_sa_VM_DEPLOY_ADDRESSES_VM_ADDRESS_0}
+        - ${int_sa_VM_DEPLOY_ADDRESSES_ERROR_0}
+        - ${int_sa_VM_DEPLOY_ADDRESSES_ERROR_1}
 
 pipelines:
   - name: TAYLORL_4900_2
@@ -35,7 +35,7 @@ pipelines:
         type: jfrog_dev/LinuxVMDeploy
         configuration:
           integrations:
-            - name: VM_DEPLOY_ADDRESSES
+            - name: sa_VM_DEPLOY_ADDRESSES
           inputResources:
             - name: myVMError
             - name: TAYLORL_4900_fileSpec
