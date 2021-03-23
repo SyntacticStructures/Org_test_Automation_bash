@@ -23,6 +23,7 @@ pipelines:
       - name: TAYLORL_4900_WINDOWS_3_1
         type: Powershell
         configuration:
+          nodePool: win_2019
           integrations:
             - name: s_artifactory
           outputResources:
@@ -34,6 +35,7 @@ pipelines:
       - name: TAYLORL_4900_WINDOWS_3_2
         type: jfrog_dev/LinuxVMDeploy
         configuration:
+          nodePool: win_2019
           integrations:
             - name: s_VM_DEPLOY_ADDRESSES
           inputResources:
