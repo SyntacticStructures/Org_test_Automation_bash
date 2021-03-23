@@ -1,9 +1,9 @@
 resources:
-  - name: TAYLORL_4900_fileSpec
+  - name: TAYLORL_4900_WINDOWS_fileSpec
     type: FileSpec
     configuration:
       sourceArtifactory: s_artifactory
-      pattern: "test-automation-generic-local/TAYLORL_4900_fileSpec.txt"
+      pattern: "test-automation-generic-local/TAYLORL_4900_WINDOWS_fileSpec.txt"
 
   - name: myVMError
     type: VmCluster
@@ -18,27 +18,27 @@ resources:
         - ${int_s_VM_DEPLOY_ADDRESSES_ERROR_1}
 
 pipelines:
-  - name: TAYLORL_4900_3
+  - name: TAYLORL_4900_WINDOWS_3
     steps:
-      - name: TAYLORL_4900_3_1
-        type: Bash
+      - name: TAYLORL_4900_WINDOWS_3_1
+        type: Powershell
         configuration:
           integrations:
             - name: s_artifactory
           outputResources:
-            - name: TAYLORL_4900_fileSpec
+            - name: TAYLORL_4900_WINDOWS_fileSpec
         execution:
           onExecute:
-            - echo "File spec ${run_id}" > TAYLORL_4900_fileSpec.txt
-            - jfrog rt upload TAYLORL_4900_fileSpec.txt test-automation-generic-local
-      - name: TAYLORL_4900_3_2
+            - echo "File spec ${run_id}" > TAYLORL_4900_WINDOWS_fileSpec.txt
+            - jfrog rt upload TAYLORL_4900_WINDOWS_fileSpec.txt test-automation-generic-local
+      - name: TAYLORL_4900_WINDOWS_3_2
         type: jfrog_dev/LinuxVMDeploy
         configuration:
           integrations:
             - name: s_VM_DEPLOY_ADDRESSES
           inputResources:
             - name: myVMError
-            - name: TAYLORL_4900_fileSpec
+            - name: TAYLORL_4900_WINDOWS_fileSpec
           deployCommand: "echo 'deployCommand runs.'"
           rollbackCommand: "echo 'rollBackCommand runs.'"
           sshUser: ubuntu

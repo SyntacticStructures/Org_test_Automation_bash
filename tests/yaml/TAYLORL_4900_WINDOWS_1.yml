@@ -1,9 +1,9 @@
 resources:
-  - name: TAYLORL_4900_fileSpec
+  - name: TAYLORL_4900_WINDOWS_fileSpec
     type: FileSpec
     configuration:
       sourceArtifactory: s_artifactory
-      pattern: "test-automation-generic-local/TAYLORL_4900_fileSpec.txt"
+      pattern: "test-automation-generic-local/TAYLORL_4900_WINDOWS_fileSpec.txt"
 
   - name: myVM
     type: VmCluster
@@ -14,21 +14,21 @@ resources:
         - ${int_s_VM_DEPLOY_ADDRESSES_VM_ADDRESS_1}
 
 pipelines:
-  - name: TAYLORL_4900_1
+  - name: TAYLORL_4900_WINDOWS_1
     steps:
-      - name: TAYLORL_4900_1_1
-        type: Bash
+      - name: TAYLORL_4900_WINDOWS_1_1
+        type: Powershell
         configuration:
           integrations:
             - name: s_artifactory
           outputResources:
-            - name: TAYLORL_4900_fileSpec
+            - name: TAYLORL_4900_WINDOWS_fileSpec
         execution:
           onExecute:
-            - echo "File spec ${run_id}" > TAYLORL_4900_fileSpec.txt
-            - jfrog rt upload TAYLORL_4900_fileSpec.txt test-automation-generic-local
+            - echo "File spec ${run_id}" > TAYLORL_4900_WINDOWS_fileSpec.txt
+            - jfrog rt upload TAYLORL_4900_WINDOWS_fileSpec.txt test-automation-generic-local
       # Check that deploy artifacts are uploaded to non-default dir.
-      - name: TAYLORL_4900_1_2
+      - name: TAYLORL_4900_WINDOWS_1_2
         type: jfrog_dev/LinuxVMDeploy
         configuration:
           integrations:
@@ -40,8 +40,8 @@ pipelines:
             - "target_directory=${step_configuration_targetDirectory}"
           inputResources:
             - name: myVM
-            - name: TAYLORL_4900_fileSpec
+            - name: TAYLORL_4900_WINDOWS_fileSpec
           # Fail the test if the file does not exist in the right path on the vm.
-          deployCommand: "ls ${target_directory}/TAYLORL_4900_fileSpec.txt || exit 1"
+          deployCommand: "ls ${target_directory}/TAYLORL_4900_WINDOWS_fileSpec.txt || exit 1"
           sshUser: ubuntu
           rolloutDelaySecs: 3
