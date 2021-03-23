@@ -14,8 +14,8 @@ resources:
         # but we should see 1.2.3.4 in the
         # console output anyway because fastFail: false
         - ${int_VM_DEPLOY_ADDRESSES_VM_ADDRESS_0}
-        - 0.0.0.0
-        - 1.2.3.4
+        - ${int_VM_DEPLOY_ADDRESSES_ERROR_0}
+        - ${int_VM_DEPLOY_ADDRESSES_ERROR_1}
 
 pipelines:
   - name: TAYLORL_4900_3
