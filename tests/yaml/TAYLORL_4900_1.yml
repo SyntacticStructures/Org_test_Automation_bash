@@ -11,7 +11,7 @@ resources:
       sshKey: VM_DEPLOY_SSHKEY
       targets:
         - 0.0.0.0
-        - "{{foo}}"
+        - ${foo}
 
 pipelines:
   - name: TAYLORL_4900_1
