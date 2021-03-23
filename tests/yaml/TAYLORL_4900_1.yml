@@ -17,7 +17,7 @@ pipelines:
   - name: TAYLORL_4900_1
     steps:
       - name: TAYLORL_4900_1_1
-        type: Bash
+        type: Powershell
         configuration:
           integrations:
             - name: s_artifactory
