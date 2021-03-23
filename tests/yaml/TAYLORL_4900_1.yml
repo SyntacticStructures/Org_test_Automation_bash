@@ -34,7 +34,7 @@ pipelines:
           integrations:
             - name: GENERIC
           environmentVariables:
-            foo: 'bar'
+            foo: 1.2.3.4
           targetDirectory: "~/test/${step_name}/${run_id}"
           vmEnvironmentVariables:
             - "step_name=${step_name}"
