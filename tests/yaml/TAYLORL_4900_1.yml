@@ -8,11 +8,10 @@ resources:
   - name: myVM
     type: VmCluster
     configuration:
-      integrations:
-        - GENERIC
       sshKey: VM_DEPLOY_SSHKEY
       targets:
         - 0.0.0.0
+        - {{foo}}
 
 pipelines:
   - name: TAYLORL_4900_1
@@ -32,6 +31,8 @@ pipelines:
       - name: TAYLORL_4900_1_2
         type: jfrog_dev/LinuxVMDeploy
         configuration:
+          environmentVariables:
+            foo: 'bar'
           targetDirectory: "~/test/${step_name}/${run_id}"
           vmEnvironmentVariables:
             - "step_name=${step_name}"
