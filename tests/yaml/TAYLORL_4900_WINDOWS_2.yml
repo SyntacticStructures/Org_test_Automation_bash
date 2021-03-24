@@ -10,8 +10,6 @@ resources:
     configuration:
       sshKey: VM_DEPLOY_SSHKEY
       targets:
-        # int_s_VM_DEPLOY_VM_ADDRESS_ERROR_0 should fail
-        # so we should never see int_s_VM_DEPLOY_VM_ADDRESS_ERROR_1 in console output
         - ${int_s_VM_DEPLOY_VM_ADDRESS_0}
         - ${int_s_VM_DEPLOY_VM_ADDRESS_ERROR_0}
         - ${int_s_VM_DEPLOY_VM_ADDRESS_ERROR_1}
