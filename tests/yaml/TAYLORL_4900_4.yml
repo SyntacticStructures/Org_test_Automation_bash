@@ -40,5 +40,5 @@ pipelines:
           inputResources:
             - name: myVM
             - name: TAYLORL_4900_buildInfo
-          deployCommand: "ls ~/${step_name}/${run_id}/TAYLORL_4900_buildinfo.txt || exit 1"
+          deployCommand: "ls ~/${step_name}/${run_id}/TAYLORL_4900_buildInfo.txt || exit 1"
           sshUser: ubuntu
