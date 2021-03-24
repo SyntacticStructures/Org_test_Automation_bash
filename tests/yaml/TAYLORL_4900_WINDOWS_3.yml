@@ -14,8 +14,8 @@ resources:
         # but we should see 1.2.3.4 in the
         # console output anyway because fastFail: false
         - ${int_s_VM_DEPLOY_VM_ADDRESS_0}
-        - ${int_s_VM_DEPLOY_ERROR_0}
-        - ${int_s_VM_DEPLOY_ERROR_1}
+        - ${int_s_VM_DEPLOY_VM_ADDRESS_ERROR_0}
+        - ${int_s_VM_DEPLOY_VM_ADDRESS_ERROR_1}
 
 pipelines:
   - name: TAYLORL_4900_WINDOWS_3
