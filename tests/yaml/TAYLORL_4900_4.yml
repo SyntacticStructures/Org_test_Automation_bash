@@ -34,6 +34,9 @@ pipelines:
         configuration:
           integrations:
             - name: s_VM_DEPLOY
+          vmEnvironmentVariables:
+            - "step_name=${step_name}"
+            - "run_id=${run_id}"
           inputResources:
             - name: myVM
             - name: TAYLORL_4900_buildInfo
