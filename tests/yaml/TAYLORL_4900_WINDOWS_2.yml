@@ -10,11 +10,11 @@ resources:
     configuration:
       sshKey: VM_DEPLOY_SSHKEY
       targets:
-        # 0.0.0.0 should fail
-        # so we should never see 1.2.3.4 in console output
-        - ${int_s_VM_DEPLOY_ADDRESSES_VM_ADDRESS_0}
-        - ${int_s_VM_DEPLOY_ADDRESSES_ERROR_0}
-        - ${int_s_VM_DEPLOY_ADDRESSES_ERROR_1}
+        # int_s_VM_DEPLOY_ERROR_0 should fail
+        # so we should never see int_s_VM_DEPLOY_ERROR_1 in console output
+        - ${int_s_VM_DEPLOY_VM_ADDRESS_0}
+        - ${int_s_VM_DEPLOY_ERROR_0}
+        - ${int_s_VM_DEPLOY_ERROR_1}
 
 pipelines:
   - name: TAYLORL_4900_WINDOWS_2
@@ -37,7 +37,7 @@ pipelines:
         configuration:
           nodePool: win_2019
           integrations:
-            - name: s_VM_DEPLOY_ADDRESSES
+            - name: s_VM_DEPLOY
           inputResources:
             - name: myVMError
             - name: TAYLORL_4900_WINDOWS_fileSpec
