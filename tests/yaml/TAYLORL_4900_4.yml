@@ -35,10 +35,13 @@ pipelines:
       - name: TAYLORL_4900_4_2
         type: jfrog_dev/LinuxVMDeploy
         configuration:
+          targetDirectory: "~/test"
+          vmEnvironmentVariables:
+            - "target_directory=${step_configuration_targetDirectory}"
           integrations:
             - name: s_VM_DEPLOY
           inputResources:
             - name: myVM
             - name: TAYLORL_4900_buildInfo
-          deployCommand: "echo 'deployCommand runs.'"
+          deployCommand: "echo 'deployCommand runs.' && ls ${targetDirectory}"
           sshUser: ubuntu
