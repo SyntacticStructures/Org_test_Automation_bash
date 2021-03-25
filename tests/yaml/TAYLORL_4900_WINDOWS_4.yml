@@ -6,7 +6,7 @@ resources:
       buildName: TAYLORL_4900_buildInfo
       buildNumber: 1
 
-  - name: myVMError
+  - name: myVM
     type: VmCluster
     configuration:
       sshKey: VM_DEPLOY_SSHKEY
