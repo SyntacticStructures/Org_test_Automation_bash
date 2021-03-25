@@ -3,6 +3,8 @@ resources:
     type: BuildInfo
     configuration:
       sourceArtifactory: s_artifactory
+      buildName: TAYLORL_4900_buildInfo
+      buildNumber: 1
 
   - name: myVM
     type: VmCluster
