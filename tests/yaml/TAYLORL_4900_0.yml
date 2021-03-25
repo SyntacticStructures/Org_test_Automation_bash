@@ -3,7 +3,7 @@ resources:
     type: FileSpec
     configuration:
       sourceArtifactory: s_artifactory
-      pattern: "test-automation-generic-local/TAYLORL_4900_fileSpec.txt"
+      pattern: "test-automation-generic-local/myApp.sh"
 
   - name: myVM
     type: VmCluster
@@ -25,8 +25,8 @@ pipelines:
             - name: TAYLORL_4900_fileSpec
         execution:
           onExecute:
-            - echo "File spec ${run_id}" > TAYLORL_4900_fileSpec.txt
-            - jfrog rt upload TAYLORL_4900_fileSpec.txt test-automation-generic-local
+            - echo "echo 'This app prints a message.'" > myApp.sh
+            - jfrog rt upload myApp.sh test-automation-generic-local
       # Check that deploy command runs and FileSpec is uploaded to default dir.
       - name: TAYLORL_4900_0_2
         type: jfrog_dev/LinuxVMDeploy
@@ -39,6 +39,6 @@ pipelines:
           inputResources:
             - name: myVM
             - name: TAYLORL_4900_fileSpec
-          deployCommand: "ls ~/${step_name}/${run_id}/TAYLORL_4900_fileSpec.txt || exit 1"
-          postDeployCommand: "ls ~/${step_name}/${run_id}/TAYLORL_4900_fileSpec.txt || exit 1"
+          deployCommand: "bash ~/${step_name}/${run_id}/myApp.sh"
           sshUser: ubuntu
+          rolloutDelaySecs: 3
