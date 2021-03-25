@@ -15,9 +15,9 @@ resources:
         - ${int_s_VM_DEPLOY_VM_ADDRESS_ERROR_1}
 
 pipelines:
-  - name: TAYLORL_4900_WINDOWS_3
+  - name: TAYLORL_4900_WINDOWS_4
     steps:
-      - name: TAYLORL_4900_WINDOWS_3_1
+      - name: TAYLORL_4900_WINDOWS_4_1
         type: Powershell
         configuration:
           nodePool: win_2019
@@ -29,7 +29,7 @@ pipelines:
           onExecute:
             - echo "File spec ${run_id}" > TAYLORL_4900_WINDOWS_fileSpec.txt
             - jfrog rt upload TAYLORL_4900_WINDOWS_fileSpec.txt test-automation-generic-local
-      - name: TAYLORL_4900_WINDOWS_3_2
+      - name: TAYLORL_4900_WINDOWS_4_2
         type: jfrog_dev/LinuxVMDeploy
         configuration:
           nodePool: win_2019
