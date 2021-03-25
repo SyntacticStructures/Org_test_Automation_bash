@@ -1,9 +1,10 @@
 resources:
-  - name: TAYLORL_4900_WINDOWS_fileSpec
-    type: FileSpec
+  - name: TAYLORL_4900_buildInfo
+    type: BuildInfo
     configuration:
       sourceArtifactory: s_artifactory
-      pattern: "test-automation-generic-local/TAYLORL_4900_WINDOWS_fileSpec.txt"
+      buildName: TAYLORL_4900_buildInfo
+      buildNumber: 1
 
   - name: myVMError
     type: VmCluster
@@ -24,11 +25,12 @@ pipelines:
           integrations:
             - name: s_artifactory
           outputResources:
-            - name: TAYLORL_4900_WINDOWS_fileSpec
+            - name: TAYLORL_4900_buildInfo
         execution:
           onExecute:
-            - echo "File spec ${run_id}" > TAYLORL_4900_WINDOWS_fileSpec.txt
-            - jfrog rt upload TAYLORL_4900_WINDOWS_fileSpec.txt test-automation-generic-local
+            - echo "Build info ${run_id}" > TAYLORL_4900_buildInfo.txt
+            - jfrog rt upload TAYLORL_4900_buildInfo.txt test-automation-generic-local --build-name=TAYLORL_4900_buildInfo --build-number=1
+            - jfrog rt build-publish TAYLORL_4900_buildInfo 1
       - name: TAYLORL_4900_WINDOWS_4_2
         type: jfrog_dev/LinuxVMDeploy
         configuration:
