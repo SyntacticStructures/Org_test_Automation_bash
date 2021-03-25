@@ -1,0 +1,45 @@
+resources:
+  - name: TAYLORL_4900_WINDOWS_fileSpec
+    type: FileSpec
+    configuration:
+      sourceArtifactory: s_artifactory
+      pattern: "test-automation-generic-local/TAYLORL_4900_WINDOWS_fileSpec.txt"
+
+  - name: myVMError
+    type: VmCluster
+    configuration:
+      sshKey: VM_DEPLOY_SSHKEY
+      targets:
+        - ${int_s_VM_DEPLOY_VM_ADDRESS_0}
+        - ${int_s_VM_DEPLOY_VM_ADDRESS_ERROR_0}
+        - ${int_s_VM_DEPLOY_VM_ADDRESS_ERROR_1}
+
+pipelines:
+  - name: TAYLORL_4900_WINDOWS_3
+    steps:
+      - name: TAYLORL_4900_WINDOWS_3_1
+        type: Powershell
+        configuration:
+          nodePool: win_2019
+          integrations:
+            - name: s_artifactory
+          outputResources:
+            - name: TAYLORL_4900_WINDOWS_fileSpec
+        execution:
+          onExecute:
+            - echo "File spec ${run_id}" > TAYLORL_4900_WINDOWS_fileSpec.txt
+            - jfrog rt upload TAYLORL_4900_WINDOWS_fileSpec.txt test-automation-generic-local
+      - name: TAYLORL_4900_WINDOWS_3_2
+        type: jfrog_dev/LinuxVMDeploy
+        configuration:
+          nodePool: win_2019
+          integrations:
+            - name: s_VM_DEPLOY
+          vmEnvironmentVariables:
+            - "step_name=${step_name}"
+            - "run_id=${run_id}"
+          inputResources:
+            - name: myVM
+            - name: TAYLORL_4900_buildInfo
+          deployCommand: "ls ~/${step_name}/${run_id}/TAYLORL_4900_buildInfo.txt || exit 1"
+          sshUser: ubuntu
