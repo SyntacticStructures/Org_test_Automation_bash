@@ -44,8 +44,9 @@ pipelines:
             - "run_id=${run_id}"
           inputResources:
             - name: myBlueCluster
-            - name: mygreenCluster
+            - name: myGreenCluster
             - name: LinuxVMDeploy_fileSpec
           deployCommand: "ls ~/${step_name}/${run_id}/LinuxVMDeploy_fileSpec.txt || exit 1"
           postDeployCommand: "ls ~/${step_name}/${run_id}/LinuxVMDeploy_fileSpec.txt || exit 1"
           sshUser: ubuntu
+          strategy: "blueGreen"
