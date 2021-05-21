@@ -46,7 +46,7 @@ pipelines:
             - name: myBlueCluster
             - name: myGreenCluster
             - name: LinuxVMDeploy_fileSpec
-          deployCommand: "sed -i -e \"s/\(<body>\).*\(<\/body>\)/<body>${run_id}<\/body>/g\" index.html"
+          deployCommand: 'sed -i -e "s/\(<body>\).*\(<\/body>\)/<body>${run_id}<\/body>/g" index.html'
           postDeployCommand: "echo 'this is the postDeployCommand' && hostname -I && curl -X GET http://10.90.124.214/swapCluster"
           cleanupCommand: "echo 'this is the cleanupCommand' && hostname -I"
           testCommand: "echo 'this is the testCommand' && hostname -I"
