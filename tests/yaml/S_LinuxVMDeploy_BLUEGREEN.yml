@@ -48,5 +48,6 @@ pipelines:
             - name: LinuxVMDeploy_fileSpec
           deployCommand: "ls ~/${step_name}/${run_id}/LinuxVMDeploy_fileSpec.txt || exit 1"
           postDeployCommand: "echo 'this is the postDeployCommand'"
+          cleanupCommand: "echo 'this is the cleanupCommand'"
           sshUser: ubuntu
           strategy: "blueGreen"
