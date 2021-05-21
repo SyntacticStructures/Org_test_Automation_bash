@@ -47,8 +47,8 @@ pipelines:
             - name: myGreenCluster
             - name: LinuxVMDeploy_fileSpec
           deployCommand: "ls ~/${step_name}/${run_id}/LinuxVMDeploy_fileSpec.txt || exit 1"
-          postDeployCommand: "echo 'this is the postDeployCommand'"
-          cleanupCommand: "echo 'this is the cleanupCommand'"
-          testCommand: "echo 'this is the testCommand'"
+          postDeployCommand: "echo 'this is the postDeployCommand' && hostname -I"
+          cleanupCommand: "echo 'this is the cleanupCommand' && hostname -I"
+          testCommand: "echo 'this is the testCommand' && hostname -I"
           sshUser: ubuntu
           strategy: "blueGreen"
