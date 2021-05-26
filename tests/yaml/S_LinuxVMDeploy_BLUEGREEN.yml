@@ -42,8 +42,7 @@ pipelines:
           vmEnvironmentVariables:
             - "step_name=${step_name}"
             - "run_id=${run_id}"
-          inputSteps:
-            - name: S_LinuxVMDeploy_BLUEGREEN_1
+          chonological: true
           inputResources:
             - name: myBlueCluster
             - name: myGreenCluster
