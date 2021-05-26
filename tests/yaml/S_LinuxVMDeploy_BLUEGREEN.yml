@@ -42,7 +42,7 @@ pipelines:
           vmEnvironmentVariables:
             - "step_name=${step_name}"
             - "run_id=${run_id}"
-          chonological: true
+          chronological: true
           inputResources:
             - name: myBlueCluster
             - name: myGreenCluster
