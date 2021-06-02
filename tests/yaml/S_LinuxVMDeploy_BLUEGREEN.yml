@@ -47,11 +47,11 @@ pipelines:
             - name: myBlueCluster
             - name: myGreenCluster
             - name: LinuxVMDeploy_fileSpec
-          deployCommand: 'sed -i -e "s/\(<body>\).*\(<\/body>\)/<body>${run_id}<\/body>/g" /home/ubuntu/blueGreenDemo/index.html'
-          postDeployCommand: "echo 'this is the postDeployCommand' && hostname -I && curl -X GET http://10.90.110.14/swapCluster"
 #          cleanupCommand: "echo 'this is the cleanupCommand' && hostname -I"
-          cleanupCommand: 'sed -i -e "s/\(<body>\).*\(<\/body>\)/<body><\/body>/g" /home/ubuntu/blueGreenDemo/index.html'
 #          testCommand: "echo 'this is the testCommand' && hostname -I && echo $live_cluster_name && echo $idle_cluster_name"
-          testCommand: 'curl $(echo $(eval echo "$"res_"$idle_cluster_name"_targets) | jq .[0])'
+          deployCommand: 'sed -i -e "s/\(<body>\).*\(<\/body>\)/<body>${run_id}<\/body>/g" /home/ubuntu/blueGreenDemo/index.html'
+          testCommand: 'curl $(eval $(echo $(eval echo "$"res_"$idle_cluster_name"_targets) | jq .[0]))'
+          postDeployCommand: "echo 'this is the postDeployCommand' && hostname -I && curl -X GET http://10.90.110.14/swapCluster"
+          cleanupCommand: 'sed -i -e "s/\(<body>\).*\(<\/body>\)/<body><\/body>/g" /home/ubuntu/blueGreenDemo/index.html'
           sshUser: ubuntu
           strategy: "blueGreen"
