@@ -50,7 +50,7 @@ pipelines:
 #          cleanupCommand: "echo 'this is the cleanupCommand' && hostname -I"
 #          testCommand: "echo 'this is the testCommand' && hostname -I && echo $live_cluster_name && echo $idle_cluster_name"
           deployCommand: 'sed -i -e "s/\(<body>\).*\(<\/body>\)/<body>${run_id}<\/body>/g" /home/ubuntu/blueGreenDemo/index.html'
-          testCommand: 'echo $(eval echo "$"res_"$idle_cluster_name"_targets | jq .[0])'
+          testCommand: 'echo $(eval echo "$"res_"$idle_cluster_name"_targets) | jq .[0]'
           postDeployCommand: "echo 'this is the postDeployCommand' && hostname -I && curl -X GET http://10.90.110.14/swapCluster"
           cleanupCommand: 'sed -i -e "s/\(<body>\).*\(<\/body>\)/<body><\/body>/g" /home/ubuntu/blueGreenDemo/index.html'
           sshUser: ubuntu
