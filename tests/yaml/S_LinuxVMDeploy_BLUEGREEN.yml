@@ -52,6 +52,6 @@ pipelines:
 #          cleanupCommand: "echo 'this is the cleanupCommand' && hostname -I"
           cleanupCommand: 'sed -i -e "s/\(<body>\).*\(<\/body>\)/<body><\/body>/g" /home/ubuntu/blueGreenDemo/index.html'
 #          testCommand: "echo 'this is the testCommand' && hostname -I && echo $live_cluster_name && echo $idle_cluster_name"
-          testCommand: 'curl http://10.90.110.14 | grep ${run_id}; echo ${run_id}'
+          testCommand: 'curl http://10.90.110.14 && curl http://10.90.110.14 | grep ${run_id}; echo ${run_id}'
           sshUser: ubuntu
           strategy: "blueGreen"
