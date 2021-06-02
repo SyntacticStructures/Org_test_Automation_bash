@@ -50,6 +50,7 @@ pipelines:
           deployCommand: 'sed -i -e "s/\(<body>\).*\(<\/body>\)/<body>${run_id}<\/body>/g" /home/ubuntu/blueGreenDemo/index.html'
           postDeployCommand: "echo 'this is the postDeployCommand' && hostname -I && curl -X GET http://10.90.110.14/swapCluster"
           cleanupCommand: "echo 'this is the cleanupCommand' && hostname -I"
-          testCommand: "echo 'this is the testCommand' && hostname -I && echo $live_cluster_name && echo $idle_cluster_name"
+#          testCommand: "echo 'this is the testCommand' && hostname -I && echo $live_cluster_name && echo $idle_cluster_name"
+          testCommand: "echo 'this is the testCommand' && hostname -I && curl http://10.90.110.14 | grep \"<body>${run_id}</body>\" || exit 1"
           sshUser: ubuntu
           strategy: "blueGreen"
