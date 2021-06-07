@@ -50,11 +50,11 @@ pipelines:
           sshUser: ubuntu
           strategy: "blueGreen"
           scripts:
-            - name: scriptUno
-            context: "buildNode"
-            commands:
-              - "echo 'scriptUno: commandUno'"
-              - "echo 'scriptUno: commandDos'"
+            - name: "scriptUno"
+              context: "buildNode"
+              commands:
+                - "echo 'scriptUno: commandUno'"
+                - "echo 'scriptUno: commandDos'"
 #            - name: scriptDos
 #            context: "targetCluster"
 #            commands:
