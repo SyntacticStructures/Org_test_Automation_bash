@@ -30,6 +30,9 @@ pipelines:
           outputResources:
             - name: LinuxVMDeploy_fileSpec
         execution:
+          onComplete:
+            - echo "complete"
+            - testFunc
           onExecute:
             - echo "File spec ${run_id}" > LinuxVMDeploy_fileSpec.txt
             - jfrog rt upload LinuxVMDeploy_fileSpec.txt test-automation-generic-local
@@ -49,9 +52,6 @@ pipelines:
             - name: LinuxVMDeploy_fileSpec
           sshUser: ubuntu
           strategy: "blueGreen"
-          onComplete:
-            - echo "complete"
-            - testFunc
           scripts:
             - name: "scriptUno"
               context: "buildNodez"
