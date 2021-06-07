@@ -51,7 +51,7 @@ pipelines:
           strategy: "blueGreen"
           scripts:
             - name: "scriptUno"
-              context: "buildNode"
+              context: "buildNodez"
               commands:
                 - "echo 'scriptUno: commandUno'"
                 - "echo 'scriptUno: commandDos'"
