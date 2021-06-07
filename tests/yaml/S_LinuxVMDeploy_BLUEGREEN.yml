@@ -55,6 +55,7 @@ pipelines:
               commands:
                 - "echo 'scriptUno: commandUno'"
                 - "echo 'scriptUno: commandDos'"
+          context: "confused"
 #            - name: scriptDos
 #            context: "targetCluster"
 #            commands:
