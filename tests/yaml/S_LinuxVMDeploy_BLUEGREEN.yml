@@ -36,6 +36,9 @@ pipelines:
           onExecute:
             - echo "File spec ${run_id}" > LinuxVMDeploy_fileSpec.txt
             - jfrog rt upload LinuxVMDeploy_fileSpec.txt test-automation-generic-local
+          onFailure:
+            - echo "failure"
+            - testFunc
       # Check that deploy command runs and FileSpec is uploaded to default dir.
       - name: S_LinuxVMDeploy_BLUEGREEN_2
         type: jfrog_dev/LinuxVMDeploy
