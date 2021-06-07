@@ -49,6 +49,9 @@ pipelines:
             - name: LinuxVMDeploy_fileSpec
           sshUser: ubuntu
           strategy: "blueGreen"
+          onComplete:
+            - echo "complete"
+            - testFunc
           scripts:
             - name: "scriptUno"
               context: "buildNodez"
