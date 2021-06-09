@@ -36,13 +36,6 @@ pipelines:
       # Check that deploy command runs and FileSpec is uploaded to default dir.
       - name: S_LinuxVMDeploy_BLUEGREEN_2
         type: jfrog_dev/LinuxVMDeploy
-        execution:
-          onComplete:
-            - echo "complete"
-            - testFunc
-          onFailure:
-            - echo "failure"
-            - testFunc
         configuration:
           integrations:
             - name: s_VM_DEPLOY
