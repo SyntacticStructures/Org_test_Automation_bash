@@ -63,12 +63,12 @@ pipelines:
                 - "echo 'scriptUno: commandUno'"
                 - "echo 'scriptUno: commandDos'"
             - name: scriptDos
-            context: "targetCluster"
-            commands:
-              - "echo 'scriptDos: commandUno'"
-              - "echo 'scriptDos: commandDos'"
+              context: "targetCluster"
+              commands:
+                - "echo 'scriptDos: commandUno'"
+                - "echo 'scriptDos: commandDos'"
             - name: scriptTres
-            context: "currentCluster"
-            commands:
-              - "echo 'scriptTres: commandUno'"
-              - "echo 'scriptTres: commandDos'"
+              context: "currentCluster"
+              commands:
+                - "echo 'scriptTres: commandUno'"
+                - "echo 'scriptTres: commandDos'"
