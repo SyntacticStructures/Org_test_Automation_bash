@@ -60,14 +60,14 @@ pipelines:
               context: "targetCluster"
               commands:
                 - 'sed -i -e "s/\(<body>\).*\(<\/body>\)/<body>${run_id}<\/body>/g" /home/ubuntu/blueGreenDemo/index.html'
-            - name: swapCluster
-              context: "buildNode"
-              commands:
-                - "echo 'this is the swapCluster command' && hostname -I && curl -X GET http://10.90.112.250/swapCluster"
             - name: test
               context: "buildNode"
               commands:
                 - 'curl $(eval echo $(echo $(eval echo "$"res_"$idle_cluster_name"_targets) | jq .[0])) | grep "${run_id}" || exit 1'
+            - name: swapCluster
+              context: "buildNode"
+              commands:
+                - "echo 'this is the swapCluster command' && hostname -I && curl -X GET http://10.90.112.250/swapCluster"
             - name: cleanup
               context: "currentCluster"
               commands:
