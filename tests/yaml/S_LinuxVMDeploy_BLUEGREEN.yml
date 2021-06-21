@@ -57,7 +57,7 @@ pipelines:
             # postDeployCommand: "echo 'this is the postDeployCommand' && hostname -I && curl -X GET http://10.90.110.14/swapCluster"
             # cleanupCommand: 'sed -i -e "s/\(<body>\).*\(<\/body>\)/<body><\/body>/g" /home/ubuntu/blueGreenDemo/index.html'
             - name: deploy
-              context: "buildNode"
+              context: "targetCluster"
               commands:
                 - 'sed -i -e "s/\(<body>\).*\(<\/body>\)/<body>${run_id}<\/body>/g" /home/ubuntu/blueGreenDemo/index.html'
             - name: swapCluster
