@@ -1,0 +1,26 @@
+resources:
+  - name: TAYLORL_filespec
+    type: FileSpec
+    configuration:
+      sourceArtifactory: s_artifactory
+      pattern: "example-repo-local/test.txt"
+  - name: TAYLORL_bitBucketServer
+    type: GitRepo
+    configuration:
+      gitProvider: myBB
+      path: ~TAYLORL/go-hello-world
+
+pipelines:
+  - name: TAYLORL
+    steps:
+      - name: TAYLORL_1
+        type: Bash
+        configuration:
+          integrations:
+            - name: s_artifactory
+          inputResources:
+            - name: TAYLORL_filespec
+            - name: TAYLORL_bitBucketServer
+        execution:
+          onExecute:
+            - echo "hello worls"
