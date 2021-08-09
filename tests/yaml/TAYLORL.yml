@@ -9,24 +9,33 @@ resources:
 #    configuration:
 #      gitProvider: myBB
 #      path: ~TAYLORL/go-hello-world
-  - name: TAYLORL_GhitHubServer
-    type: GitRepo
-    configuration:
-      gitProvider: TAYLORL_GithubServer
-      path: SyntacticStructures/Org_test_Automation_PowerShell
-
+#  - name: TAYLORL_GhitHubServer
+#    type: GitRepo
+#    configuration:
+#      gitProvider: TAYLORL_GithubServer
+#      path: SyntacticStructures/Org_test_Automation_PowerShell
+#
+#pipelines:
+#  - name: TAYLORL
+#    steps:
+#      - name: TAYLORL_1
+#        type: Bash
+#        configuration:
+#          integrations:
+#            - name: s_artifactory
+#          inputResources:
+##            - name: TAYLORL_filespec
+##            - name: TAYLORL_bitBucketServer
+#            - name: TAYLORL_GhitHubServer
+#        execution:
+#          onExecute:
+#            - echo "hello worls"
 pipelines:
   - name: TAYLORL
     steps:
-      - name: TAYLORL_1
-        type: Bash
+      - name: test_jenkins
+        type: Jenkins
         configuration:
+          jenkinsJobName: testPipeline
           integrations:
-            - name: s_artifactory
-          inputResources:
-#            - name: TAYLORL_filespec
-#            - name: TAYLORL_bitBucketServer
-            - name: TAYLORL_GhitHubServer
-        execution:
-          onExecute:
-            - echo "hello worls"
+            - name: s_jenkins
