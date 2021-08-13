@@ -1,41 +1,21 @@
 resources:
-#  - name: TAYLORL_filespec
-#    type: FileSpec
-#    configuration:
-#      sourceArtifactory: s_artifactory
-#      pattern: "example-repo-local/test.txt"
-#  - name: TAYLORL_bitBucketServer
-#    type: GitRepo
-#    configuration:
-#      gitProvider: myBB
-#      path: ~TAYLORL/go-hello-world
-#  - name: TAYLORL_GhitHubServer
-#    type: GitRepo
-#    configuration:
-#      gitProvider: TAYLORL_GithubServer
-#      path: SyntacticStructures/Org_test_Automation_PowerShell
-#
-#pipelines:
-#  - name: TAYLORL
-#    steps:
-#      - name: TAYLORL_1
-#        type: Bash
-#        configuration:
-#          integrations:
-#            - name: s_artifactory
-#          inputResources:
-##            - name: TAYLORL_filespec
-##            - name: TAYLORL_bitBucketServer
-#            - name: TAYLORL_GhitHubServer
-#        execution:
-#          onExecute:
-#            - echo "hello worls"
+  - name: mvnRepo
+    type: GitRepo
+    configuration:
+      gitProvider: myBB
+      path: maven-hello-world
+      branches:
+        include: master
+
 pipelines:
   - name: TAYLORL
     steps:
       - name: test_jenkins
-        type: Jenkins
+        type: MvnBuild
         configuration:
-          jenkinsJobName: testPipeline
+          sourceLocation: "my-app"
+          forceXrayScan: "true"
           integrations:
-            - name: s_jenkins
+            - name: s_artifactory
+          inputResources:
+            - name: mvnRepo
