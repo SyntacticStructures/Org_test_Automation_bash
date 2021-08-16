@@ -13,6 +13,7 @@ pipelines:
       - name: build_npm
         type: NpmBuild
         configuration:
+          resolverRepo: "npm"
           integrations:
             - name: s_artifactory
           inputResources:
