@@ -3,7 +3,7 @@ resources:
     type: GitRepo
     configuration:
       gitProvider: myBB
-      path: maven-hello-world
+      path: ~taylorl/maven-hello-world
       branches:
         include: master
 
