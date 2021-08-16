@@ -1,14 +1,18 @@
 resources:
-  - name: nodeRepo
+  - name: nodeRepoLinux
     type: GitRepo
     configuration:
       gitProvider: myBB
       path: ~taylorl/maven-hello-world
       branches:
         include: node
+  - name: buildInfoLinux
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: s_artifactory
 
 pipelines:
-  - name: TAYLORL
+  - name: TAYLORL_LINUX
     steps:
       - name: build_npm
         type: NpmBuild
@@ -17,12 +21,16 @@ pipelines:
           integrations:
             - name: s_artifactory
           inputResources:
-            - name: nodeRepo
+            - name: nodeRepoLinux
       - name: publish_npm
         type: NpmPublish
         configuration:
-          forceXrayScan: "true"
+          autoPublishBuildInfo: true
+          deployerRepo: "npm-target"
+          forceXrayScan: true
           integrations:
             - name: s_artifactory
           inputSteps:
             - name: build_npm
+          outputResources:
+            - name: buildInfoLinux
