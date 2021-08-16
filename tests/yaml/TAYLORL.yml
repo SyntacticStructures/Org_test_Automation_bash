@@ -1,21 +1,27 @@
 resources:
-  - name: mvnRepo
+  - name: nodeRepo
     type: GitRepo
     configuration:
       gitProvider: myBB
       path: ~taylorl/maven-hello-world
       branches:
-        include: master
+        include: node
 
 pipelines:
   - name: TAYLORL
     steps:
-      - name: test_jenkins
-        type: MvnBuild
+      - name: build_npm
+        type: NpmBuild
         configuration:
-          sourceLocation: "my-app"
+          integrations:
+            - name: s_artifactory
+          inputResources:
+            - name: nodeRepo
+      - name: publish_npm
+        type: NpmPublish
+        configuration:
           forceXrayScan: "true"
           integrations:
             - name: s_artifactory
           inputResources:
-            - name: mvnRepo
+            - name: build_npm
