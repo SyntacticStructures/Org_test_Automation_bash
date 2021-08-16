@@ -13,8 +13,6 @@ pipelines:
       - name: build_npm
         type: NpmBuild
         configuration:
-          runtime:
-            type: host
           integrations:
             - name: s_artifactory
           inputResources:
@@ -22,8 +20,6 @@ pipelines:
       - name: publish_npm
         type: NpmPublish
         configuration:
-          runtime:
-            type: host
           forceXrayScan: "true"
           integrations:
             - name: s_artifactory
