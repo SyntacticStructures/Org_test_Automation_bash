@@ -23,5 +23,5 @@ pipelines:
           forceXrayScan: "true"
           integrations:
             - name: s_artifactory
-          inputResources:
+          inputSteps:
             - name: build_npm
