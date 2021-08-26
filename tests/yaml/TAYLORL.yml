@@ -1,5 +1,5 @@
 resources:
-  - name: nodeRepoLinux
+  - name: TAYLORL_GitRepo
     type: GitRepo
     configuration:
       gitProvider: myBB
@@ -12,21 +12,21 @@ resources:
       sourceArtifactory: s_artifactory
 
 pipelines:
-  - name: TAYLORL_LINUX
+  - name: TAYLORL
     steps:
-      - name: build_npm
+      - name: TAYLORL_1
         type: NpmBuild
         configuration:
-          resolverRepo: "npm"
+          resolverRepo: "test-automation-npm-remote"
           integrations:
             - name: s_artifactory
           inputResources:
             - name: nodeRepoLinux
-      - name: publish_npm
+      - name: TAYLORL_2
         type: NpmPublish
         configuration:
           autoPublishBuildInfo: true
-          deployerRepo: "npm-target"
+          deployerRepo: "test-automation-npm-local"
           forceXrayScan: true
           integrations:
             - name: s_artifactory
