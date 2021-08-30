@@ -29,7 +29,6 @@ pipelines:
       - name: S_NpmPublish_6679_001_2
         type: NpmPublish
         configuration:
-          # publish buildInfo so we can scan the build.
           autoPublishBuildInfo: true
           deployerRepo: "test-automation-npm-local"
           forceXrayScan: true
