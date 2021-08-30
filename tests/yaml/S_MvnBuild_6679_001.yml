@@ -9,7 +9,10 @@ resources:
       path: {{ .Values.GitHub.Org_test_Automation_bash.path }}
       branches:
         include: {{gitBranch}}
-
+  - name: S_MvnBuild_6679_001_BuildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: s_artifactory
 pipelines:
   - name: S_MvnBuild_6679_001
     configuration:
@@ -23,3 +26,7 @@ pipelines:
           forceXrayScan: true
           inputResources:
             - name: S_MvnBuild_6679_001_GitRepo
+          outputResources:
+            - name: S_MvnBuild_6679_001_BuildInfo
+          integrations:
+            - name: s_artifactory
