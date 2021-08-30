@@ -1,20 +1,24 @@
 resources:
-  - name: TAYLORL_GitRepo
+  - name: S_NpmPublish_6679_01_GitRepo
     type: GitRepo
     configuration:
       gitProvider: s_gitHub
+      # TODO change these to template vars
+#      path: { { .Values.GitHub.Org_test_Automation_bash.path } }
+#      branches:
+#        include: {{gitBranch}}
       path: SyntacticStructures/Org_test_Automation_bash
       branches:
         include: master
-  - name: buildInfoLinux
+  - name: S_NpmPublish_6679_01_buildInfo
     type: BuildInfo
     configuration:
       sourceArtifactory: s_artifactory
 
 pipelines:
-  - name: TAYLORL
+  - name: S_NpmPublish_6679_01
     steps:
-      - name: TAYLORL_1
+      - name: S_NpmPublish_6679_01_1
         type: NpmBuild
         configuration:
           sourceLocation: "tests/npm"
@@ -22,8 +26,8 @@ pipelines:
           integrations:
             - name: s_artifactory
           inputResources:
-            - name: TAYLORL_GitRepo
-      - name: TAYLORL_2
+            - name: S_NpmPublish_6679_01_GitRepo
+      - name: S_NpmPublish_6679_01_2
         type: NpmPublish
         configuration:
           autoPublishBuildInfo: true
@@ -32,6 +36,6 @@ pipelines:
           integrations:
             - name: s_artifactory
           inputSteps:
-            - name: TAYLORL_1
+            - name: S_NpmPublish_6679_01_1
           outputResources:
-            - name: buildInfoLinux
+            - name: S_NpmPublish_6679_01_buildInfo
