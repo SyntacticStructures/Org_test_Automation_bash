@@ -32,6 +32,6 @@ pipelines:
           integrations:
             - name: s_artifactory
           inputSteps:
-            - name: build_npm
+            - name: TAYLORL_1
           outputResources:
             - name: buildInfoLinux
