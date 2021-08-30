@@ -2,10 +2,10 @@ resources:
   - name: TAYLORL_GitRepo
     type: GitRepo
     configuration:
-      gitProvider: myBB
-      path: ~taylorl/maven-hello-world
+      gitProvider: s_gitHub
+      path: SyntacticStructures/Org_test_Automation_bash
       branches:
-        include: node
+        include: master
   - name: buildInfoLinux
     type: BuildInfo
     configuration:
@@ -17,11 +17,12 @@ pipelines:
       - name: TAYLORL_1
         type: NpmBuild
         configuration:
+          sourceLocation: "tests/npm"
           resolverRepo: "test-automation-npm-remote"
           integrations:
             - name: s_artifactory
           inputResources:
-            - name: nodeRepoLinux
+            - name: TAYLORL_GitRepo
       - name: TAYLORL_2
         type: NpmPublish
         configuration:
