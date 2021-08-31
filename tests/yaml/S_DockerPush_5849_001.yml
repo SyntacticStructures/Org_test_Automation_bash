@@ -17,7 +17,8 @@ pipelines:
         type: DockerBuild
         configuration:
           affinityGroup: S_DockerPush_5849_001
-          dockerImageName: ${artifactory_registry_url}/test-automation-docker-local/s_dockerpush_5849
+          # TODO: should be ${artifactory_registry_url}/test-automation-docker-local/s_dockerpush_5849
+          dockerImageName: https://jpdtaylorl.jfrogdev.org/artifactory/test-automation-docker-local/s_dockerpush_5849
           dockerImageTag: ${run_id}
           inputResources:
             - name: S_DockerPush_5849_001_GitRepo
