@@ -23,6 +23,7 @@ pipelines:
       - name: S_PublishBuildInfo_6679_001_2
         type: PublishBuildInfo
         configuration:
+          forceXrayScan: true
           outputResources:
             - name: S_PublishBuildInfo_6679_001_output
           inputSteps:
