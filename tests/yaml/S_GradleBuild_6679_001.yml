@@ -21,6 +21,7 @@ pipelines:
         configuration:
           sourceLocation: "tests/gradle"
           autoPublishBuildInfo: true
+          gradleCommand: "hello"
           forceXrayScan: true
           inputResources:
             - name: S_GradleBuild_6679_001_GitRepo
