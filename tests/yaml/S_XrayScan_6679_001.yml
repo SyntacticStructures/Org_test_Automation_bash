@@ -48,4 +48,4 @@ pipelines:
             - name: s_artifactory
         execution:
           onExecute:
-            - jfrog rt curl -XDELETE "/api/build/${res_S_XrayScan_6679_001_BuildInfo_output_buildName}?buildNumbers=${res_S_XrayScan_6679_001_BuildInfo_input_buildNumber}&artifacts=1"
+            - jfrog rt curl -XDELETE "/api/build/${res_S_XrayScan_6679_001_BuildInfo_output_buildName}?buildNumbers=${res_S_XrayScan_6679_001_BuildInfo_output_buildNumber}&artifacts=1"
