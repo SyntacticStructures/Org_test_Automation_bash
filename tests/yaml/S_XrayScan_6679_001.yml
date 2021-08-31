@@ -21,7 +21,7 @@ resources:
       sourceArtifactory: s_artifactory
 
 pipelines:
-  - name: pipeline_S_XrayScan_6679_001_1
+  - name: S_XrayScan_6679_001_1
     steps:
       - name: S_XrayScan_6679_001_1
         type: GoBuild
@@ -43,7 +43,7 @@ pipelines:
             - name: S_XrayScan_6679_001_BuildInfo_input
           targetRepository: test-automation-go-local
           autoPublishBuildInfo: true
-  - name: pipeline_S_XrayScan_6679_001_2
+  - name: S_XrayScan_6679_001_2
     configuration:
       inputResources:
         - name: S_XrayScan_6679_001_BuildInfo_input
