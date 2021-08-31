@@ -29,6 +29,8 @@ pipelines:
       - name: S_GoPublishBinary_6679_001_2
         type: GoPublishBinary
         configuration:
+          integrations:
+            - name: s_artifactory
           autoPublishBuildInfo: true
           forceXrayScan: true
           inputSteps:
