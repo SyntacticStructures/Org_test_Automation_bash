@@ -37,8 +37,9 @@ pipelines:
             - name: S_XrayScan_6679_001_1
       - name: S_XrayScan_6679_001_3
         type: XrayScan
-        inputResources:
-          - name: S_XrayScan_6679_001_BuildInfo_output
+        configuration:
+          inputResources:
+            - name: S_XrayScan_6679_001_BuildInfo_output
       - name: S_XrayScan_6679_001_4
         type: Bash
         configuration:
