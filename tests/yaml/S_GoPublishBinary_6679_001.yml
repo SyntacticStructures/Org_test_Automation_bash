@@ -9,9 +9,13 @@ resources:
       path: {{ .Values.GitHub.Org_test_Automation_bash.path }}
       branches:
         include: {{gitBranch}}
+  - name: S_GoPublishBinary_6679_001_buildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: s_artifactory
 
 pipelines:
-  - name: pipeline_S_GoPublishBinary_6679_001
+  - name: S_GoPublishBinary_6679_001
     configuration:
       integrations:
         - name: s_artifactory
@@ -30,3 +34,5 @@ pipelines:
           inputSteps:
             - name: S_GoPublishBinary_6679_001_1
           targetRepository: test-automation-go-local
+          outputResources:
+            - name: S_GoPublishBinary_6679_001_buildInfo
