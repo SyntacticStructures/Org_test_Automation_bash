@@ -3,8 +3,6 @@ resources:
     type: BuildInfo
     configuration:
       sourceArtifactory: s_artifactory
-      buildName: 'name'
-      buildNumber: '1'
 
 pipelines:
   - name: S_PublishBuildInfo_6679_001

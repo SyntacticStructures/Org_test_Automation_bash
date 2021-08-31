@@ -6,8 +6,6 @@ resources:
     type: BuildInfo
     configuration:
       sourceArtifactory: s_artifactory
-      buildName: 'name'
-      buildNumber: '1'
   - name: S_XrayScan_6679_001_BuildInfo_output
     type: BuildInfo
     configuration:
