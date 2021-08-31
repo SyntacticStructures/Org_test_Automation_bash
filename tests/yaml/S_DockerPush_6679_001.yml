@@ -21,8 +21,8 @@ pipelines:
         type: DockerBuild
         configuration:
           affinityGroup: S_DockerPush_6679_001
-          # TODO: change to dockerImageName: ${artifactory_registry_url}/test-automation-docker-local/S_DockerPush_6679_001
-          dockerImageName: jpdtaylorl.jfrogdev.org/test-automation-docker-local/S_DockerPush_6679_001
+          # TODO: change to dockerImageName: ${artifactory_registry_url}/test-automation-docker-local/s_dockerpush_5849
+          dockerImageName: jpdtaylorl.jfrogdev.org/test-automation-docker-local/s_dockerPush_6679_001
           dockerImageTag: ${run_id}
           dockerFileLocation: "tests/docker"
           inputResources:
