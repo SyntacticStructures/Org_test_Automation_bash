@@ -42,11 +42,11 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: S_GoPublishBinary_6679_001_buildInfo_output
+            - name: S_GoPublishBinary_6679_001_buildInfo
           inputSteps:
             - name: GoPublishBinary_6679_001_3
           integrations:
             - name: s_artifactory
         execution:
           onExecute:
-            - jfrog rt curl -XDELETE "/api/build/${res_S_GoPublishBinary_6679_001_buildInfo_output_buildName}?buildNumbers=${res_S_GoPublishBinary_6679_001_buildInfo_output_buildNumber}&artifacts=1"
+            - jfrog rt curl -XDELETE "/api/build/${res_S_GoPublishBinary_6679_001_buildInfo_buildName}?buildNumbers=${res_S_GoPublishBinary_6679_001_buildInfo_buildNumber}&artifacts=1"
