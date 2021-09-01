@@ -36,3 +36,15 @@ pipelines:
           targetRepository: test-automation-go-local
           outputResources:
             - name: S_GoPublishModule_6679_001_buildInfo
+      - name: S_GoPublishModule_6679_001_3
+        type: Bash
+        configuration:
+          inputResources:
+            - name: S_GoPublishModule_6679_001_buildInfo
+          inputSteps:
+            - name: S_GoPublishModule_6679_001_2
+          integrations:
+            - name: s_artifactory
+        execution:
+          onExecute:
+            - jfrog rt curl -XDELETE "/api/build/${res_S_GoPublishModule_6679_001_buildInfo_buildName}?buildNumbers=${res_S_GoPublishModule_6679_001_buildInfo_buildNumber}&artifacts=1"
