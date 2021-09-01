@@ -28,7 +28,7 @@ pipelines:
       - name: S_XrayScan_6679_001_2
         type: PublishBuildInfo
         configuration:
-          forceXrayScan: true
+          forceXrayScan: false
           outputResources:
             - name: S_XrayScan_6679_001_BuildInfo_output
           inputSteps:
