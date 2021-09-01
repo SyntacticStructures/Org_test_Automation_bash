@@ -44,7 +44,7 @@ pipelines:
           inputResources:
             - name: S_GoPublishBinary_6679_001_buildInfo
           inputSteps:
-            - name: GoPublishBinary_6679_001_3
+            - name: S_GoPublishBinary_6679_001_2
           integrations:
             - name: s_artifactory
         execution:
