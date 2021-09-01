@@ -42,3 +42,15 @@ pipelines:
             - name: s_artifactory
           outputResources:
             - name: S_DockerPush_6679_001_buildInfo
+      - name: S_DockerPush_6679_001_3
+        type: Bash
+        configuration:
+          inputResources:
+            - name: S_DockerPush_6679_001_buildInfo
+          inputSteps:
+            - name: S_DockerPush_6679_001_2
+          integrations:
+            - name: s_artifactory
+        execution:
+          onExecute:
+            - jfrog rt curl -XDELETE "/api/build/${res_S_DockerPush_6679_001_buildInfo_buildName}?buildNumbers=${res_S_DockerPush_6679_001_buildInfo_buildNumber}&artifacts=1"
