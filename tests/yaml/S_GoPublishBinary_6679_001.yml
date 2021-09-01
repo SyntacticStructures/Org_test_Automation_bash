@@ -38,3 +38,17 @@ pipelines:
           targetRepository: test-automation-go-local
           outputResources:
             - name: S_GoPublishBinary_6679_001_buildInfo
+      - name: S_GoPublishBinary_6679_001_3
+        type: Bash
+        configuration:
+          inputResources:
+            - name: GoPublishBinary_6679_001_buildInfo_output
+          inputSteps:
+            - name: GoPublishBinary_6679_001_3
+          integrations:
+            - name: s_artifactory
+        execution:
+          onExecute:
+            - echo $res_GoPublishBinary_6679_001_buildInfo_output_buildNumber
+            - jfrog rt curl -XDELETE "/api/build/${res_GoPublishBinary_6679_001_buildInfo_output_buildName}?buildNumbers=${res_GoPublishBinary_6679_001_buildInfo_output_buildNumber}&artifacts=1"
+
