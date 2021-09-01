@@ -49,6 +49,4 @@ pipelines:
             - name: s_artifactory
         execution:
           onExecute:
-            - echo $res_GoPublishBinary_6679_001_buildInfo_output_buildNumber
-            - jfrog rt curl -XDELETE "/api/build/${res_GoPublishBinary_6679_001_buildInfo_output_buildName}?buildNumbers=${res_GoPublishBinary_6679_001_buildInfo_output_buildNumber}&artifacts=1"
-
+            - jfrog rt curl -XDELETE "/api/build/${res_S_GoPublishBinary_6679_001_buildInfo_output_buildName}?buildNumbers=${res_S_GoPublishBinary_6679_001_buildInfo_output_buildNumber}&artifacts=1"
