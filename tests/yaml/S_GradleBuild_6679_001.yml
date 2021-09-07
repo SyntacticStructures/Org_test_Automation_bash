@@ -29,3 +29,15 @@ pipelines:
             - name: S_GradleBuild_6679_001_BuildInfo
           integrations:
             - name: s_artifactory
+      - name: S_GradleBuild_6679_001_3
+        type: Bash
+        configuration:
+          inputResources:
+            - name: S_GradleBuild_6679_001_BuildInfo
+          inputSteps:
+            - name: S_GradleBuild_6679_001_2
+          integrations:
+            - name: s_artifactory
+        execution:
+          onExecute:
+            - jfrog rt curl -XDELETE "/api/build/${res_S_GradleBuild_6679_001_BuildInfo_buildName}?buildNumbers=${res_S_GradleBuild_6679_001_BuildInfo_buildNumber}&artifacts=1"
