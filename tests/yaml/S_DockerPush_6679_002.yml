@@ -36,7 +36,6 @@ pipelines:
         type: DockerPush
         configuration:
           autoPublishBuildInfo: true
-          forceXrayScan: true
           affinityGroup: S_DockerPush_6679_002
           targetRepository: test-automation-docker-local
           inputSteps:
