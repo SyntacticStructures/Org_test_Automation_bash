@@ -27,7 +27,7 @@ pipelines:
           inputResources:
             - name: S_NpmPublish_6679_002_GitRepo
         execution:
-          onExecute:
+          onStart:
             - echo 'failing on purpose'
             - exit 1
       - name: S_NpmPublish_6679_002_2
