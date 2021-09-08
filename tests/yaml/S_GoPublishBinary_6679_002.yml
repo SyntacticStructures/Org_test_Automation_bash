@@ -36,7 +36,6 @@ pipelines:
           integrations:
             - name: s_artifactory
           autoPublishBuildInfo: true
-          forceXrayScan: true
           inputSteps:
             - name: S_GoPublishBinary_6679_002_1
           targetRepository: test-automation-go-local
