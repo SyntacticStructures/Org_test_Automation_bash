@@ -35,7 +35,6 @@ pipelines:
         configuration:
           autoPublishBuildInfo: true
           deployerRepo: "test-automation-npm-local"
-          forceXrayScan: true
           integrations:
             - name: s_artifactory
           inputSteps:
