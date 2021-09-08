@@ -24,7 +24,7 @@ pipelines:
             - echo 'failing on purpose'
             - exit 1
         configuration:
-          dockerImageName: jpdtaylorl.jfrogdev.org/test-automation-docker-local/s_dockerpush_6679_002
+          dockerImageName: foo/bar/baz
           dockerImageTag: ${run_id}
           affinityGroup: S_DockerPush_6679_002
           dockerFileLocation: "tests/docker"
