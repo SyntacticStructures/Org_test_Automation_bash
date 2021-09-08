@@ -1,0 +1,37 @@
+template: true
+valuesFilePath: ../values/gitRepoValues.yml
+
+resources:
+  - name: S_XrayScan_6679_002_BuildInfo_input
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: s_artifactory
+  - name: S_XrayScan_6679_002_BuildInfo_output
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: s_artifactory
+
+pipelines:
+  - name: S_XrayScan_6679_002
+    steps:
+      - name: S_XrayScan_6679_002_1
+        type: Bash
+        configuration:
+          integrations:
+            - name: s_artifactory
+        execution:
+          onStart:
+            - echo 'failing on purpose'
+            - exit 1
+      - name: S_XrayScan_6679_002_2
+        type: PublishBuildInfo
+        configuration:
+          outputResources:
+            - name: S_XrayScan_6679_002_BuildInfo_output
+          inputSteps:
+            - name: S_XrayScan_6679_002_1
+      - name: S_XrayScan_6679_002_3
+        type: XrayScan
+        configuration:
+          inputResources:
+            - name: S_XrayScan_6679_002_BuildInfo_output
