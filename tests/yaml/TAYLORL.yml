@@ -21,4 +21,4 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - cat "$res_TAYLORL_1_GitRepo_path/tests/junit/test_results_example_1.xml"
+            - cat "$res_TAYLORL_1_GitRepo_resourcePath/tests/junit/test_results_example_1.xml"
