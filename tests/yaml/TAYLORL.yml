@@ -21,5 +21,4 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - echo "$res_S_NpmPublish_6679_001_GitRepo"
-            - ls $res_S_NpmPublish_6679_001_GitRepo/test/junit
+            - cat "$res_TAYLORL_1_GitRepo_path/tests/junit/test_results_example_1.xml"
