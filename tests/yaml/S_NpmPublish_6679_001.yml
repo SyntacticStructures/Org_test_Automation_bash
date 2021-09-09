@@ -40,16 +40,3 @@ pipelines:
             - name: S_NpmPublish_6679_001_1
           outputResources:
             - name: S_NpmPublish_6679_001_buildInfo
-      - name: S_NpmPublish_6679_001_3
-        type: Bash
-        configuration:
-          affinityGroup: S_NpmPublish_6679_001
-          inputResources:
-            - name: S_NpmPublish_6679_001_buildInfo
-          inputSteps:
-            - name: S_NpmPublish_6679_001_2
-          integrations:
-            - name: s_artifactory
-        execution:
-          onExecute:
-            - jfrog rt curl -XDELETE "/api/build/${res_S_NpmPublish_6679_001_buildInfo_buildName}?buildNumbers=${res_S_NpmPublish_6679_001_buildInfo_buildNumber}&artifacts=1"
