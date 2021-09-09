@@ -1,0 +1,25 @@
+template: true
+valuesFilePath: ../values/gitRepoValues.yml
+
+resources:
+  - name: TAYLORL_1_GitRepo
+    type: GitRepo
+    configuration:
+      gitProvider: s_gitHub
+      path: {{ .Values.GitHub.Org_test_Automation_bash.path }}
+      branches:
+        include: {{gitBranch}}
+
+pipelines:
+  - name: TAYLORL
+    steps:
+      - name: TAYLORL_1
+        type: Bash
+        configuration:
+          inputResources:
+            - name: TAYLORL_1_GitRepo
+        execution:
+          onExecute:
+            - printenv
+            - echo "$res_S_NpmPublish_6679_001_GitRepo"
+            - ls $res_S_NpmPublish_6679_001_GitRepo/test/junit
