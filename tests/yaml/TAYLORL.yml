@@ -1,0 +1,18 @@
+resources:
+  - name: TAYLORL_perforce
+    type: PerforceDepot
+    configuration:
+      perforceProvider: perforceTest
+      client: demo-workspace
+
+pipelines:
+  - name: TAYLORL
+    steps:
+      - name: TAYLORL_1
+        type: Bash
+        configuration:
+          inputResources:
+            - name: TAYLORL_perforce
+        execution:
+          onExecute:
+            - echo 'hello'
