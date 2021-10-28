@@ -4,6 +4,7 @@ resources:
     configuration:
       perforceProvider: perforceTest
       client: demo-workspace
+      host: ubuntu-bionic
 
 pipelines:
   - name: TAYLORL
