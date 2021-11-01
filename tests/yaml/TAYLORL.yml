@@ -3,7 +3,7 @@ resources:
     type: PerforceDepot
     configuration:
       perforceProvider: perforceTest
-      client: demo-workspace
+      client: poc
       host: ubuntu-bionic
 
 pipelines:
