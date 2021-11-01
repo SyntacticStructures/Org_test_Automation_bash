@@ -1,0 +1,8 @@
+pipelines:
+  - name: TAYLORL_1
+    steps:
+      - name: TAYLORL_1_1
+        type: Bash
+        execution:
+          onExecute:
+            - echo 'hello'
