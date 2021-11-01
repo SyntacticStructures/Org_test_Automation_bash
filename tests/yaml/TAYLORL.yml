@@ -5,6 +5,7 @@ resources:
       perforceProvider: perforceTest
       client: poc
       host: jfrog
+      root: /pipelines/scripts/python
 
 pipelines:
   - name: TAYLORL
