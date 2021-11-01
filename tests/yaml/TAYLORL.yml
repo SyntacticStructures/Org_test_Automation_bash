@@ -4,7 +4,7 @@ resources:
     configuration:
       perforceProvider: perforceTest
       client: poc
-      host: ubuntu-bionic
+      host: jfrog
 
 pipelines:
   - name: TAYLORL
