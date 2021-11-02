@@ -6,15 +6,18 @@ pipelines:
         execution:
           onExecute:
             - echo 'step 1'
-            - add_run_vairables run_key="${stepId}"
+            - echo "${step_id}"
+            - add_run_vairables run_key="${step_id}"
       - name: TAYLORL_2_2
         type: Bash
         execution:
           onExecute:
             - echo 'step 2'
+            - echo "${step_id}"
       - name: TAYLORL_2_3
         type: Bash
         execution:
           onExecute:
             - echo 'step 3'
+            - echo "${step_id}"
             - echo "${run_key}"
