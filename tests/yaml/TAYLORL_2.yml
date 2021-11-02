@@ -10,16 +10,18 @@ pipelines:
             - add_run_vairables run_key="${step_id}"
       - name: TAYLORL_2_2
         type: Bash
-        inputSteps:
-          - TAYLORL_2_1
+        configuration:
+          inputSteps:
+            - name: TAYLORL_2_1
         execution:
           onExecute:
             - echo 'step 2'
             - echo "${step_id}"
       - name: TAYLORL_2_3
         type: Bash
-        inputSteps:
-          - TAYLORL_2_2
+        configuration:
+          inputSteps:
+            - name: TAYLORL_2_2
         execution:
           onExecute:
             - echo 'step 3'
