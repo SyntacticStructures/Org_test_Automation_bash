@@ -23,7 +23,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: testing_danielt
+            - name: testing_taylor
           requiresApproval:
             timeoutSeconds: 3600
         execution:
