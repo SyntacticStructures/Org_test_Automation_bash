@@ -1,16 +1,16 @@
-resources:
-  - name: testing_taylor
-    type: PropertyBag
-    configuration:
-      test: undefined
+# resources:
+  # - name: testing_taylor
+  #   type: PropertyBag
+  #   configuration:
+  #     test: undefined
 pipelines:
   - name: TAYLORL_2
     steps:
       - name: TAYLORL_2_1
         type: Bash
-        configuration:
-          outputResources:
-            - name: testing_taylor
+        # configuration:
+          # outputResources:
+          #   - name: testing_taylor
         execution:
           onStart:
             - echo 'step 1'
@@ -22,8 +22,8 @@ pipelines:
       - name: TAYLORL_2_2
         type: Bash
         configuration:
-          inputResources:
-            - name: testing_taylor
+          # inputResources:
+          #   - name: testing_taylor
           requiresApproval:
             timeoutSeconds: 3600
         execution:
