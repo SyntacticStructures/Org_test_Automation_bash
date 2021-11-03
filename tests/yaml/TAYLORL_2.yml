@@ -1,29 +1,29 @@
-# resources:
-  # - name: testing_taylor
-  #   type: PropertyBag
-  #   configuration:
-  #     test: undefined
+resources:
+  - name: testing_taylor
+    type: PropertyBag
+    configuration:
+      test: undefined
 pipelines:
   - name: TAYLORL_2
     steps:
       - name: TAYLORL_2_1
         type: Bash
-        # configuration:
-          # outputResources:
-          #   - name: testing_taylor
+        configuration:
+          outputResources:
+            - name: testing_taylor
         execution:
           onStart:
             - echo 'step 1'
             - echo "${step_id}"
             - add_run_variables run_key="${step_id}"
-            # - write_output testing_taylor test=${step_id}
+            - write_output testing_taylor test=${step_id}
           onExecute:
             - echo 'step 1'
       - name: TAYLORL_2_2
         type: Bash
         configuration:
-          inputSteps:
-            - name: TAYLORL_2_1
+          inputResources:
+            - name: testing_taylor
           requiresApproval:
             timeoutSeconds: 3600
         execution:
