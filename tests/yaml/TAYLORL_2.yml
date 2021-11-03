@@ -16,7 +16,7 @@ pipelines:
             - echo 'step 1'
             - echo "${step_id}"
             - add_run_variables run_key="${step_id}"
-            - write_output testing_taylor test=${step_id}
+            # - write_output testing_taylor test=${step_id}
           onExecute:
             - echo 'step 1'
       - name: TAYLORL_2_2
