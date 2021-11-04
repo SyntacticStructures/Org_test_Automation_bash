@@ -28,7 +28,3 @@ pipelines:
             - name: testing_taylorl_3
           requiresApproval:
             timeoutSeconds: 3600
-        execution:
-          onExecute:
-            - echo 'step 2'
-            - echo "run variable is ${run_key}"
