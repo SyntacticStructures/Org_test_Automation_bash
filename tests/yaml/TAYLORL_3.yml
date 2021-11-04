@@ -1,0 +1,34 @@
+resources:
+  - name: testing_taylorl_3
+    type: PropertyBag
+    configuration:
+      test: undefined
+pipelines:
+  - name: TAYLORL_3
+    steps:
+      - name: TAYLORL_3_1
+        type: Bash
+        configuration:
+          outputResources:
+            - name: testing_taylorl_3
+        execution:
+          onStart:
+            - echo "${run_id}"
+            - add_run_variables run_key="${run_id}"
+            - write_output testing_taylorl_3 test=${run_id}
+          onExecute:
+            - echo 'step 1'
+      - name: TAYLORL_3_2
+        type: Jenkins
+        configuration:
+        integrations:
+            - name: i_testJenkins
+          jenkinsJobName: foo
+          inputResources:
+            - name: testing_taylorl_3
+          requiresApproval:
+            timeoutSeconds: 3600
+        execution:
+          onExecute:
+            - echo 'step 2'
+            - echo "run variable is ${run_key}"
