@@ -21,7 +21,7 @@ pipelines:
       - name: TAYLORL_3_2
         type: Jenkins
         configuration:
-        integrations:
+          integrations:
             - name: i_testJenkins
           jenkinsJobName: foo
           inputResources:
