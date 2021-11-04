@@ -30,4 +30,4 @@ pipelines:
           onExecute:
             - echo 'step 2'
             - echo "${step_id}"
-            - echo "${run_key}"
+            - echo "run variable is ${run_key}"
