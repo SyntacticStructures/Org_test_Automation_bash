@@ -17,4 +17,6 @@ pipelines:
             - name: TAYLORL_perforce
         execution:
           onExecute:
-            - ls $res_TAYLORL_perforce_resourcePath
+            - apt-get -qq install -y tree
+            - echo "$res_TAYLORL_perforce_resourcePath"
+            - tree "$res_TAYLORL_perforce_resourcePath"
