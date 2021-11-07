@@ -1,11 +1,11 @@
 resources:
-  - name: TAYLORL_perforce
-    type: PerforceDepot
+  - name: TAYLORL_gitHub
+    type: GitRepo
     configuration:
-      perforceProvider: perforceTest
-      client: poc
-      host: jfrog
-      root: /perforce/poc
+      gitProvider: s_gitHub
+      path: SyntacticStructures/Org_test_Automation_bash
+      branches:
+        include: {{gitBranch}}
 
 pipelines:
   - name: TAYLORL
@@ -14,7 +14,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: TAYLORL_perforce
+            - name: TAYLORL_gitHub
         execution:
           onExecute:
             - echo 'hello'
