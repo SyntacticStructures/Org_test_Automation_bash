@@ -27,4 +27,4 @@ pipelines:
           inputResources:
             - name: testing_taylorl_3
           requiresApproval:
-            timeoutSeconds: 3600
+            timeoutSeconds: 3601
