@@ -17,4 +17,4 @@ pipelines:
             - name: TAYLORL_perforce
         execution:
           onExecute:
-            - echo 'hello'
+            - ls $res_TAYLORL_perforce_resourcePath
