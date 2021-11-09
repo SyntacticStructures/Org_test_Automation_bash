@@ -1,0 +1,22 @@
+resources:
+  - name: PERFORCE_DEMO_depot
+    type: PerforceDepot
+    configuration:
+      perforceProvider: perforceTest
+      client: poc
+      host: jfrog
+      root: /perforce/poc
+
+pipelines:
+  - name: PERFORCE_DEMO
+    steps:
+      - name: PERFORCE_DEMO_1
+        type: Bash
+        configuration:
+          inputResources:
+            - name: PERFORCE_DEMO_depot
+        execution:
+          onExecute:
+            - apt-get -qq install -y tree
+            - echo "$res_PERFORCE_DEMO_depot_resourcePath"
+            - tree "$res_PERFORCE_DEMO_depot_resourcePath"
