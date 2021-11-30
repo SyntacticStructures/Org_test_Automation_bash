@@ -1,0 +1,9 @@
+pipelines:
+  - name: TAYLORL_000_bash
+    steps:
+      - name: TAYLORL_000_bash
+        type: Bash
+        execution:
+          onExecute:
+            - mkdir emptyDir
+            - save_tests emptyDir
