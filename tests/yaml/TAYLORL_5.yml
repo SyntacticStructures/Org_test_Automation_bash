@@ -1,0 +1,89 @@
+resources:
+  - name: propertyBag_1
+    type: PropertyBag
+    configuration:
+      property1: "jfrog"
+      property2: "pipelines"
+  - name: propertyBag_2
+    type: PropertyBag
+    configuration:
+      runNumber: 0
+  - name: propertyBag_3
+    type: PropertyBag
+    configuration:
+      runNumber: 0
+  - name: propertyBag_4
+    type: PropertyBag
+    configuration:
+      runNumber: 0
+  - name: propertyBag_5
+    type: PropertyBag
+    configuration:
+      runNumber: 0
+  - name: propertyBag_6
+    type: PropertyBag
+    configuration:
+      runNumber: 0
+
+
+pipelines:
+  - name: TAYLORL
+    steps:
+      - name: TAYLORL_1
+        type: Bash
+        configuration:
+          inputResources:
+            - name: propertyBag_1
+          outputResources:
+            - name: propertyBag_2
+        execution:
+          onExecute:
+            - echo 'hello'
+  - name: TAYLORL_2
+    steps:
+      - name: TAYLORL_2
+        type: Bash
+        configuration:
+          inputResources:
+            - name: propertyBag_2
+          outputResources:
+            - name: propertyBag_3
+        execution:
+          onExecute:
+            - echo 'hello'
+  - name: TAYLORL_3
+    steps:
+      - name: TAYLORL_3
+        type: Bash
+        configuration:
+          inputResources:
+            - name: propertyBag_3
+          outputResources:
+            - name: propertyBag_4
+        execution:
+          onExecute:
+            - echo 'hello'
+  - name: TAYLORL_4
+    steps:
+      - name: TAYLORL_4
+        type: Bash
+        configuration:
+          inputResources:
+            - name: propertyBag_4
+          outputResources:
+            - name: propertyBag_5
+        execution:
+          onExecute:
+            - echo 'hello'
+  - name: TAYLORL_5
+    steps:
+      - name: TAYLORL_5
+        type: Bash
+        configuration:
+          inputResources:
+            - name: propertyBag_5
+          outputResources:
+            - name: propertyBag_6
+        execution:
+          onExecute:
+            - echo 'hello'
