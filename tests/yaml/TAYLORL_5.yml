@@ -47,6 +47,7 @@ pipelines:
           inputResources:
             - name: propertyBag_2
           outputResources:
+            - name: propertyBag_2
             - name: propertyBag_3
         execution:
           onExecute:
