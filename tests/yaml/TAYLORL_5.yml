@@ -47,7 +47,6 @@ pipelines:
           inputResources:
             - name: propertyBag_2
           outputResources:
-            - name: propertyBag_2
             - name: propertyBag_3
         execution:
           onExecute:
@@ -71,6 +70,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
+            - name: propertyBag_2
             - name: propertyBag_4
           outputResources:
             - name: propertyBag_5
