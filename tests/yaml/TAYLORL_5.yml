@@ -24,6 +24,10 @@ resources:
     type: PropertyBag
     configuration:
       runNumber: 0
+  - name: propertyBag_7
+    type: PropertyBag
+    configuration:
+      runNumber: 0
 
 
 pipelines:
@@ -34,6 +38,7 @@ pipelines:
         configuration:
           inputResources:
             - name: propertyBag_1
+            - name: propertyBag_7
           outputResources:
             - name: propertyBag_2
         execution:
@@ -46,6 +51,7 @@ pipelines:
         configuration:
           inputResources:
             - name: propertyBag_2
+            - name: propertyBag_7
           outputResources:
             - name: propertyBag_3
         execution:
@@ -58,6 +64,7 @@ pipelines:
         configuration:
           inputResources:
             - name: propertyBag_3
+            - name: propertyBag_7
           outputResources:
             - name: propertyBag_4
             - name: propertyBag_2
