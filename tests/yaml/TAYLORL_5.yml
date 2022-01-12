@@ -60,6 +60,7 @@ pipelines:
             - name: propertyBag_3
           outputResources:
             - name: propertyBag_4
+            - name: propertyBag_2
         execution:
           onExecute:
             - echo 'hello'
