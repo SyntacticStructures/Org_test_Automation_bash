@@ -1,0 +1,20 @@
+resources:
+  - name: myCron
+    type: CronTrigger
+    configuration:
+      interval: "8 * * * *"
+      branches: # only update the resource if the branch pattern matches (multibranch only)
+        include: "^dev.+$"
+        exclude: "^dev-test.+$"
+
+pipelines:
+  - name: TAYLORL
+    steps:
+      - name: TAYLORL
+        type: Bash
+        configuration:
+          inputResources:
+            - name: myCron
+        execution:
+          onExecute:
+            - echo hello
