@@ -1,0 +1,38 @@
+#resources:
+#  - name: TRIGGER_DEMO
+#    type: PropertyBag
+#    configuration:
+#      EXIT_CODE: 0
+
+pipelines:
+  - name: TRIGGER_DEMO
+    configuration:
+      environmentVariables:
+        readOnly:
+          EXIT_CODE: 1
+    steps:
+      - name: BUILD_1
+        type: Bash
+        execution:
+          onExecute:
+            - exit $EXIT_CODE
+      - name: BUILD_2
+        type: Bash
+        execution:
+          onExecute:
+            - exit $EXIT_CODE
+      - name: BUILD_3
+        type: Bash
+        execution:
+          onExecute:
+            - exit $EXIT_CODE
+      - name: deploy
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: BUILD_1
+            - name: BUILD_2
+            - name: BUILD_3
+        execution:
+          onExecute:
+            - exit 0
