@@ -1,8 +1,8 @@
-#resources:
-#  - name: TRIGGER_DEMO
-#    type: PropertyBag
-#    configuration:
-#      EXIT_CODE: 0
+resources:
+  - name: Trigger_Demo_resource
+    type: PropertyBag
+    configuration:
+      version: 0
 
 pipelines:
   - name: TRIGGER_DEMO
@@ -10,29 +10,35 @@ pipelines:
       environmentVariables:
         readOnly:
           EXIT_CODE: 1
+          DEPLOY_CODE: 1
     steps:
-      - name: BUILD_1
+      - name: build
         type: Bash
         execution:
           onExecute:
-            - exit $EXIT_CODE
-      - name: BUILD_2
+            - write_output Trigger_Demo_resource "version=$run_id"
+        configuration:
+          outputResources:
+            - name: Trigger_Demo_resource
+      - name: test
         type: Bash
+        configuration:
+          inputSteps:
+            - name: build
+          inputResources:
+            - name: Trigger_Demo_resource
         execution:
           onExecute:
-            - exit $EXIT_CODE
-      - name: BUILD_3
-        type: Bash
-        execution:
-          onExecute:
+            - echo $EXIT_CODE
             - exit $EXIT_CODE
       - name: deploy
         type: Bash
         configuration:
+          inputResources:
+            - name: Trigger_Demo_resource
           inputSteps:
-            - name: BUILD_1
-            - name: BUILD_2
-            - name: BUILD_3
+            - name: test
         execution:
           onExecute:
-            - exit 0
+            - echo deploying version $res_Trigger_Demo_resource_version
+            - exit $DEPLOY_CODE
