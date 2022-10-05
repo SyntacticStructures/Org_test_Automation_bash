@@ -28,9 +28,8 @@ pipelines:
             - ls
             - popd
             - python3 -m py_compile tests/core/sampleExecutionFile/calc.py
-            - pip install --upgrade pip
-            - hash -d pip
-            - pip install pytest
+            - pip3 install --upgrade pip
+            - pip3 install pytest
             - py.test --verbose --junit-xml test-reports/results.xml tests/core/sampleExecutionFile/test_calc.py
             - save_tests $res_S_Bash_Util_0012_resourcePath/savetests/test.xml
             - popd

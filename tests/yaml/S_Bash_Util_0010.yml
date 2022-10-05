@@ -21,8 +21,7 @@ pipelines:
           onExecute:
             - pushd $res_S_Bash_Util_0010_resourcePath
             - python3 -m py_compile tests/core/sampleExecutionFile/calc.py
-            - pip install --upgrade pip
-            - hash -d pip
-            - pip install pytest
+            - pip3 install --upgrade pip
+            - pip3 install pytest
             - save_tests $res_S_Bash_Util_0010_resourcePath/test_reports
             - popd
