@@ -1,0 +1,6 @@
+pipelines:
+  steps:
+    - name: taylorl_0001
+      execution:
+        onExecute:
+          - uname -m
