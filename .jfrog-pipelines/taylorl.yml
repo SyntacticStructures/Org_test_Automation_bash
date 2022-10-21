@@ -2,6 +2,7 @@ pipelines:
   -name: taylorl
    steps:
      - name: taylorl_0001
+       type: Bash
        execution:
          onExecute:
            - uname -m
