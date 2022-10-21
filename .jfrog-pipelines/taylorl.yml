@@ -1,7 +1,7 @@
 pipelines:
   -name: taylorl
-    steps:
-      - name: taylorl_0001
-        execution:
-          onExecute:
-            - uname -m
+   steps:
+     - name: taylorl_0001
+       execution:
+         onExecute:
+           - uname -m
