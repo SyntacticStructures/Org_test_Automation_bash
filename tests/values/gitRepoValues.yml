@@ -6,7 +6,7 @@ GitHub:
   Org_test_Automation_PowerShell:
     path: jfbetapipeorg/Org_test_Automation_PowerShell
   Org_test_Automation_Webhooks:
-      path: SyntacticStructures/Org_test_Automation_Webhooks
+    path: SyntacticStructures/Org_test_Automation_Webhooks
 
 GitHubEnterprise:
   Org_test_Automation:
