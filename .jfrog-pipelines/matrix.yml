@@ -1,0 +1,15 @@
+pipelines:
+  - name: matrix
+    steps:
+      - name: matrix
+        type: Matrix
+        stepMode: Bash
+        stepletMultipliers:
+          environmentVariables:
+            - foo_val: foo
+              bar_val: bar
+            - foo_val: foofoo
+              bar_val: barbar
+        execution:
+          onStart:
+            - echo $foo_val
