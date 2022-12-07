@@ -1,0 +1,14 @@
+pipelines:
+  - name: taylorl2
+    steps:
+      - name: taylorl_0001
+        type: Bash
+        configuration:
+          integrations:
+            - name: int_email
+        execution:
+          onExecute:
+            - echo hello
+            - 2 == 4
+          onComplete:
+            - send_notification int_email --recipients taylorl@jfrog.com --show-failing-commands
