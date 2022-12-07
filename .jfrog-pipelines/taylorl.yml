@@ -4,8 +4,11 @@ pipelines:
       - name: taylorl_0001
         type: Bash
         configuration:
-          runtime:
-            type: host
+          inputResources:
+            - name: int_email
         execution:
           onExecute:
-            - uname -m
+            - echo hello
+            - 2 == 1
+          onFailure:
+            - send_notification int_email taylorl@jfrog.com
