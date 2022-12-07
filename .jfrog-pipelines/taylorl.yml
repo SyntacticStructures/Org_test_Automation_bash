@@ -4,7 +4,7 @@ pipelines:
       - name: taylorl_0001
         type: Bash
         configuration:
-          inputResources:
+          integrations:
             - name: int_email
         execution:
           onExecute:
