@@ -9,6 +9,5 @@ pipelines:
         execution:
           onExecute:
             - echo hello
-            - 2 == 4
           onFailure:
             - send_notification int_email --recipients taylorl@jfrog.com --show-failing-commands
