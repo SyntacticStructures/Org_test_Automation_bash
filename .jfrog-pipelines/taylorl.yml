@@ -5,7 +5,7 @@ pipelines:
         type: Bash
         configuration:
           integrations:
-            - name: int_email
+            - name: int_slack
         execution:
           onExecute:
             - echo hello

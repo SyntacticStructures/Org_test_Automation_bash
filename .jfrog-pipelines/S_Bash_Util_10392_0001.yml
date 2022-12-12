@@ -1,5 +1,5 @@
 pipelines:
-  - name: taylorl2
+  - name: taylorl
     steps:
       - name: taylorl_0001
         type: Bash
