@@ -1,5 +1,5 @@
 pipelines:
-  - name: taylorl
+  - name: slack
     steps:
       - name: taylorl_0001
         type: Bash
