@@ -5,13 +5,7 @@ pipelines:
         type: Bash
         configuration:
           integrations:
-            - name: int_email
+            - name: int_slack
         execution:
           onExecute:
-            - echo hello
-            - 2 == 4
-          onFailure:
-            - bogusCommand
-          onComplete:
-            - send_notification int_email --recipients taylorl@jfrog.com --show-failing-commands
-            - badCommand
+            - send_notification int_slack --text "starting test_step_1"
