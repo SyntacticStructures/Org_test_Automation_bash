@@ -1,13 +1,13 @@
 pipelines:
-  - name: slack
+  - name: email
     steps:
       - name: taylorl_0001
         type: Bash
         configuration:
           integrations:
-            - name: int_slack
+            - name: int_email
         execution:
           onExecute:
             - echo hello
           onFailure:
-            - send_notification int_email --recipients taylorl@jfrog.com --show-failing-commands
+            - send_notification int_email --recipients taylorl@jfrog.com
