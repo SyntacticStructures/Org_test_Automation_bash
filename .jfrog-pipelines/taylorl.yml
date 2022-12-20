@@ -1,15 +1,16 @@
 pipelines:
-  - name: S_Bash_Util_6380_009
+  - name: S_Bash_Util_8631_002
+    configuration:
+      jfrogCliVersion: 2
     steps:
-      - name: S_Bash_Util_6380_009_1
+      - name: S_Bash_Util_8631_002
         type: Bash
         configuration:
           integrations:
             - name: s_artifactory
-            - name: int_token
         execution:
           onExecute:
-            - configure_jfrog_cli --artifactory-url $int_s_artifactory_url --access-token $int_int_token_token --server-name test_config
-            - jfrog config show test_config
+            - configure_jfrog_cli --xray-url "${int_s_artifactory_url%artifactory}notxray" --artifactory-url $int_s_artifactory_url --user $int_s_artifactory_user --apikey $int_s_artifactory_apikey --server-name test_config
+            - jfrog config show test_config | grep "${int_s_artifactory_url%artifactory}notxray"
           onComplete:
             - cleanup_jfrog_cli --server-name test_config
