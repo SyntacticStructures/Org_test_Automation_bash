@@ -1,13 +1,17 @@
+resources:
+  - name: S_Bash_Util_0020_output
+    type: PropertyBag
+    configuration:
+      testItem: testValue
+
 pipelines:
-  - name: email
+  - name: S_Bash_Util_0020
     steps:
-      - name: taylorl_0001
+      - name: S_Bash_Util_0020
         type: Bash
         configuration:
-          integrations:
-            - name: int_email
+          outputResources:
+            - name: S_Bash_Util_0020_output
         execution:
           onExecute:
-            - echo hello
-          onFailure:
-            - send_notification int_email --recipients taylorl@jfrog.com
+            - write_output S_Bash_Util_0020_output "test="
