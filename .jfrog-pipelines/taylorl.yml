@@ -1,11 +1,15 @@
 pipelines:
   - name: taylorl
+    configuration:
+      affinityGroup: 'foo'
     steps:
       - name: taylorl_0001
         type: Bash
-        configuration:
-          runtime:
-            type: host
         execution:
           onExecute:
-            - uname -m
+            - echo hello1
+      - name: taylorl_0002
+        type: Bash
+        execution:
+          onExecute:
+            - echo hello2
