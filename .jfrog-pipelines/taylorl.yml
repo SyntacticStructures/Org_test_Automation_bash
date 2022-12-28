@@ -10,6 +10,9 @@ pipelines:
             - echo hello1
       - name: taylorl_0002
         type: Bash
+        configuration:
+          inputSteps:
+            - name: taylorl_0001
         execution:
           onExecute:
             - echo hello2
