@@ -1,8 +1,11 @@
 pipelines:
-  - name: S_Bash_Util_8631_002
+  - name: taylorl
     steps:
-      - name: S_Bash_Util_8631_001
+      - name: taylorl_0001
         type: Bash
+        configuration:
+          runtime:
+            type: host
         execution:
           onExecute:
-            - echo hello
+            - uname -m
