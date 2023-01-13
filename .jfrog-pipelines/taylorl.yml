@@ -1,18 +1,27 @@
+resources:
+  - name: res1
+    type: GitRepo
+    configuration:
+      path: SytacticStructures/Org_test_Automation
+      gitProvider: s_gitHub
+  - name: res2
+    type: GitRepo
+    configuration:
+      path: SytacticStructures/Org_test_Automation_bash
+      gitProvider: s_gitHub
+  
+
 pipelines:
   - name: taylorl
     configuration:
-      affinityGroup: 'foo'
+      nodePool: 'w19'
     steps:
       - name: taylorl_0001
-        type: Bash
+        type: PowerShell
+        configuration:
+          inputResources:
+            - name: res1
+            - name: res2
         execution:
           onExecute:
             - echo hello1
-      - name: taylorl_0002
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: taylorl_0001
-        execution:
-          onExecute:
-            - echo hello2
