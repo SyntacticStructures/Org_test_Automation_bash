@@ -2,11 +2,13 @@ resources:
   - name: res1
     type: GitRepo
     configuration:
+      cloneProtocol: https
       path: ~taylorl/go-hello-world
       gitProvider: bitbucket
   - name: res2
     type: GitRepo
     configuration:
+      cloneProtocol: https
       path: ~taylorl/automation-test-scripts
       gitProvider: bitbucket
   
