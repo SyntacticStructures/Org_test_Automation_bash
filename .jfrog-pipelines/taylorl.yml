@@ -33,7 +33,6 @@ pipelines:
         configuration:
           inputResources:
             - name: res3
-            # - name: res2
         execution:
           onExecute:
             - echo hello1
