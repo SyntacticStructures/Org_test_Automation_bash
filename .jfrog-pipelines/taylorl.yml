@@ -2,12 +2,12 @@ resources:
   - name: res1
     type: GitRepo
     configuration:
-      path: SytacticStructures/Org_test_Automation
+      path: SyntacticStructures/Org_test_Automation
       gitProvider: s_gitHub
   - name: res2
     type: GitRepo
     configuration:
-      path: SytacticStructures/Org_test_Automation_bash
+      path: SyntacticStructures/Org_test_Automation_bash
       gitProvider: s_gitHub
   
 
