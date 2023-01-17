@@ -4,11 +4,11 @@ resources:
     configuration:
       path: ~taylorl/go-hello-world
       gitProvider: bitbucket
-  # - name: res2
-  #   type: GitRepo
-  #   configuration:
-  #     path: SyntacticStructures/Org_test_Automation_bash
-  #     gitProvider: s_gitHub
+  - name: res2
+    type: GitRepo
+    configuration:
+      path: ~taylorl/automation-test-scripts
+      gitProvider: bitbucket
   
 
 pipelines:
@@ -21,7 +21,7 @@ pipelines:
         configuration:
           inputResources:
             - name: res1
-            # - name: res2
+            - name: res2
         execution:
           onExecute:
             - echo hello1
