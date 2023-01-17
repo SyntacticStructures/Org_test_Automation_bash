@@ -11,16 +11,16 @@ resources:
       cloneProtocol: https
       path: ~taylorl/automation-test-scripts
       gitProvider: bitbucket
-  -name: res3
-   type: GitRepo
-   configuration:
-     path: ~taylorl/controlplane
-     cloneProtocol: https
-     gitProvider: bitbucket
-     branches:
-       include: ^master$
-     files:
-       include: \b(tools\/ms-testing-library|packages\/types).*
+  - name: res3
+    type: GitRepo
+    configuration:
+      path: ~taylorl/controlplane
+      cloneProtocol: https
+      gitProvider: bitbucket
+      branches:
+        include: ^master$
+      files:
+        include: \b(tools\/ms-testing-library|packages\/types).*
 
 
 pipelines:
