@@ -2,7 +2,7 @@ resources:
   - name: res1
     type: GitRepo
     configuration:
-      path: PIP/controlplane
+      path: ~taylorl/controlplanego-hello-world
       gitProvider: bitbucket
   # - name: res2
   #   type: GitRepo
