@@ -19,8 +19,8 @@ resources:
       gitProvider: bitbucket
       branches:
         include: ^master$
-      # files:
-      #   include: \b(tools\/ms-testing-library|packages\/types).*
+      files:
+        include: \b(tools\/ms-testing-library|packages\/types).*
 
 
 pipelines:
@@ -35,4 +35,5 @@ pipelines:
             - name: res3
         execution:
           onExecute:
+            - printenv
             - echo hello1
