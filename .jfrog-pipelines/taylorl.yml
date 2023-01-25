@@ -25,11 +25,9 @@ resources:
 
 pipelines:
   - name: taylorl
-    configuration:
-      nodePool: 'w19'
     steps:
       - name: taylorl_0001
-        type: PowerShell
+        type: Bash
         configuration:
           inputResources:
             - name: res3
