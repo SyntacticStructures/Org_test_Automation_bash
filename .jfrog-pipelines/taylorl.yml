@@ -10,5 +10,5 @@ pipelines:
           onFailure:
             - echo \"Failed...\"
             - echo \"testing 1234\" && return 1
-        onComplete:
-          - send_notification email --recipients taylorl@jfrog.com --show-failing-commands
+          onComplete:
+            - send_notification email --recipients taylorl@jfrog.com --show-failing-commands
