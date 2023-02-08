@@ -1,37 +1,14 @@
-resources:
-  # - name: res1
-  #   type: GitRepo
-  #   configuration:
-  #     cloneProtocol: https
-  #     path: ~taylorl/go-hello-world
-  #     gitProvider: bitbucket
-  # - name: res2
-  #   type: GitRepo
-  #   configuration:
-  #     cloneProtocol: https
-  #     path: ~taylorl/automation-test-scripts
-  #     gitProvider: bitbucket
-  - name: res3
-    type: GitRepo
-    configuration:
-      path: SyntacticStructures/Org_test_Automation_bash
-      cloneProtocol: https
-      gitProvider: bitbucket
-      branches:
-        include: ^master$
-      files:
-        include: \b(tests).*
-
-
 pipelines:
   - name: taylorl
     steps:
       - name: taylorl_0001
         type: Bash
-        configuration:
-          inputResources:
-            - name: res3
         execution:
           onExecute:
-            - printenv
-            - echo hello1
+            - echo "executing step"
+            - cat doesnotexist.txt
+          onFailure:
+            - echo \"Failed...\"
+            - echo \"testing 1234\" && return 1
+        onComplete:
+          - send_notification email --recipients taylorl@jfrog.com --show-failing-commands
