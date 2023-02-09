@@ -1,0 +1,9 @@
+pipelines:
+  - name: psdemo
+    steps:
+      - name: psdemo1
+        type: PowerShell
+        configuration:
+        execution:
+          onExecute:
+           - Write-Output
