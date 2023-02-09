@@ -5,4 +5,4 @@ pipelines:
         type: PowerShell
         execution:
           onExecute:
-           - Write-Output
+           - Write-Output hello
