@@ -3,9 +3,9 @@ pipelines:
     steps:
       - name: taylorl_0001
         type: Bash
-        configuration:
-          integrations:
-            - name: email
+        # configuration:
+          # integrations:
+            # - name: email
         execution:
           onExecute:
             - echo "executing step"
