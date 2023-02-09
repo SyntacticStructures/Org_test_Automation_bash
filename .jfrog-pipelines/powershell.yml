@@ -3,7 +3,6 @@ pipelines:
     steps:
       - name: psdemo1
         type: PowerShell
-        configuration:
         execution:
           onExecute:
            - Write-Output
