@@ -5,6 +5,6 @@ pipelines:
         type: TriggerPipeline
         configuration:
           pipelineName: child
-          stepName: child_0001 
+          stepName: child_001 
           integrations:
             - name: artifactory
