@@ -6,5 +6,6 @@ pipelines:
         configuration:
           pipelineName: child
           stepName: child_001
+          waitForRunCompletion: false
           integrations:
             - name: artifactory
