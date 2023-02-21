@@ -1,8 +1,0 @@
-pipelines:
-  - name: child
-    steps:
-      - name: child_001
-        type: Bash
-        execution:
-          onExecute:
-           - echo hello
